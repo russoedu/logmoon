@@ -1,11 +1,3 @@
-class Test {
-  /**
-   * Constructor
-   * @param {string} is The is string
-   */
-  constructor (is) {
-    this.is = is
-  }
-}
+#!/usr/bin/env node
 
-module.exports = Test
+console.log('module running')
