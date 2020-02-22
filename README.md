@@ -1,4 +1,4 @@
-![LogMoon Logo](https://vectr.com/russoedu/eyLOsitfC.svg?width=128&select=eyLOsitfCpage0)
+![LogMoon Logo](https://vectr.com/russoedu/eyLOsitfC.svg?width=256&select=eyLOsitfCpage0)
 
 
 [![Dependencies Status](https://david-dm.org/russoedu/logmoon/status.svg)](https://david-dm.org/russoedu/logmoon)
@@ -34,7 +34,7 @@ The number of requestes per second threshold witch will display an alert when re
 
 *Default value is 10.* (Alert is displayed if 10 or more requests per second are made in the past 2 minutes).
 
-### 3. ```LOG_FILE_LOCATION``` (location)
+### 3. ```LOG_FILE``` (location)
 
 The location of the [W3C-formatted HTTP access log](https://www.w3.org/Daemon/User/Config/Logging.html).
 

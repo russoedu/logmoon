@@ -1,13 +1,18 @@
 const env = require('dotenv').config()
+let instance = null
 
 /**
- * Configuration class
+ * Singleton configuration class
  */
 class Config {
   /**
    * Configurator constructor
+   * Read all environment variables to configure the application
    */
   constructor () {
+    if (instance !== null) {
+      return instance
+    }
     /**
      * The interval to display information
      * @type number
@@ -33,9 +38,9 @@ class Config {
      * @type string
      * @default '/tmp/access.log'
      */
-    this.logFileLocation = typeof process.env.LOG_FILE_LOCATION === 'undefined'
+    this.logFile = typeof process.env.LOG_FILE === 'undefined'
       ? '/tmp/access.log'
-      : process.env.LOG_FILE_LOCATION
+      : process.env.LOG_FILE
 
     /**
      * The configuration for the tail execution. Used to define the char encoding of the log file
@@ -44,6 +49,9 @@ class Config {
     this.tailConfig = typeof process.env.LOG_ENCODING === 'undefined'
       ? { encoding: 'utf-8' }
       : { encoding: process.env.LOG_ENCODING }
+
+    instance = this
+    return instance
   }
 }
 

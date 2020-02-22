@@ -1,4 +1,4 @@
-const Config = require('../src/config')
+const Config = require('../src/config.mjs')
 const env = require('dotenv').config()
 const expect = require('chai').expect
 const mockedEnv = require('mocked-env')

@@ -1,22 +1,24 @@
 #!/usr/bin/env node
 
-const Config = require('./config')
-const Tail = require('tail').Tail
+const tail = require('./tail')
+// const Config = require('./config')
+// const config = new Config()
 
-console.log('module running')
-const config = new Config()
+let dataCol = [];
+tail.on('line', (data) => {
+  console.log(data)
+  // dataCol.push(data)
+})
 
-try {
-  const tail = new Tail(config.logFileLocation, config.tailConfig)
-  console.log(config)
-
-  tail.on('line', (data) => {
-    console.log(data)
-  })
-
-  tail.on('error', (error) => {
-    console.error(error)
-  })
-} catch (error) {
+tail.on('error', (error) => {
   console.error(error)
+})
+
+function repeat (data = 0) {
+  console.log(data, dataCol.length)
+  dataCol = []
+  setTimeout(() => {
+    repeat(data + 1)
+  }, 1000)
 }
+repeat()

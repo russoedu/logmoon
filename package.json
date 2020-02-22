@@ -53,6 +53,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
+    "fs-backwards-stream": "^1.0.0",
     "node-notifier": "^6.0.0",
     "tail": "^2.0.3"
   }
