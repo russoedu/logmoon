@@ -3,17 +3,20 @@ const Config = require('./config')
 const config = new Config()
 
 /**
- * Tail class
- * Read the log stream
+ * Tail class, reads the log stream
  */
 class Tail {
   /**
-   * Returns a new Tail caller, responsible for reading the log file in real time
+   * Starts the log tail
+   * @param {function} success the callback function on data read success
+   * @param {function} error the callback function on error
    */
-  static run () {
-    console.log(config)
-    return new T(config.logFile, config.tailConfig)
+  static start (success, error) {
+    const tail = new T(config.logFile, config.tailConfig)
+
+    tail.on('line', (data) => success(data))
+    tail.on('error', (e) => error(e))
   }
 }
 
-module.exports = Tail.run()
+module.exports = Tail

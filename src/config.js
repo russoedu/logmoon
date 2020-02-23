@@ -16,7 +16,6 @@ class Config {
     }
 
     if (instance !== null) {
-      console.log('new instance')
       return instance
     }
     /**
