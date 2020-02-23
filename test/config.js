@@ -15,8 +15,8 @@ describe('Config', () => {
       expect(config.statsDisplayInterval).to.equal(10 * 1000)
       expect(config.requestsPreSecondAlarm).to.equal(10)
       expect(config.logFile).to.equal('/tmp/access.log')
-      expect(config.tailConfig).to.be.an('object')
-      expect(config.tailConfig.encoding).to.equal('utf-8')
+      expect(config.outputLocation).to.equal(false)
+      expect(config.alarmPeriod).to.equal(120)
 
       restore()
     })
@@ -26,8 +26,9 @@ describe('Config', () => {
         {
           LOGMOON_STATS_DISPLAY_INTERVAL: '123',
           LOGMOON_REQUESTS_PER_SECOND_ALARM: '456',
-          LOGMOON_LOG_FILE: '/var/tmp/file.js',
-          LOGMOON_LOG_ENCODING: 'utf-16'
+          LOGMOON_LOG_FILE: '/var/tmp/file.log',
+          LOGMOON_OUTPUT_LOCATION: '/var/tmp/logmoon.log',
+          LOGMOON_ALARM_PERIOD: '10'
         }
       )
       config = new Config()
@@ -38,13 +39,14 @@ describe('Config', () => {
       expect(process.env.LOGMOON_REQUESTS_PER_SECOND_ALARM).to.equal('456')
       expect(config.requestsPreSecondAlarm).to.equal(10)
 
-      expect(process.env.LOGMOON_LOG_FILE).to.equal('/var/tmp/file.js')
+      expect(process.env.LOGMOON_LOG_FILE).to.equal('/var/tmp/file.log')
       expect(config.logFile).to.equal('/tmp/access.log')
 
-      expect(config.tailConfig).to.be.an('object')
+      expect(process.env.LOGMOON_OUTPUT_LOCATION).to.equal('/var/tmp/logmoon.log')
+      expect(config.outputLocation).to.equal(false)
 
-      expect(process.env.LOGMOON_LOG_ENCODING).to.equal('utf-16')
-      expect(config.tailConfig.encoding).to.equal('utf-8')
+      expect(process.env.LOGMOON_ALARM_PERIOD).to.equal('10')
+      expect(config.alarmPeriod).to.equal(120)
 
       restore()
     })
@@ -54,8 +56,9 @@ describe('Config', () => {
         {
           LOGMOON_STATS_DISPLAY_INTERVAL: '123',
           LOGMOON_REQUESTS_PER_SECOND_ALARM: '456',
-          LOGMOON_LOG_FILE: '/var/tmp/file.js',
-          LOGMOON_LOG_ENCODING: 'utf-16'
+          LOGMOON_LOG_FILE: '/var/tmp/file.log',
+          LOGMOON_OUTPUT_LOCATION: '/var/tmp/logmoon.log',
+          LOGMOON_ALARM_PERIOD: '10'
         }
       )
 
@@ -63,10 +66,9 @@ describe('Config', () => {
       expect(config).to.be.an('object')
       expect(config.statsDisplayInterval).to.equal(123 * 1000)
       expect(config.requestsPreSecondAlarm).to.equal(456)
-      expect(config.logFile).to.equal('/var/tmp/file.js')
-      expect(config.tailConfig).to.be.an('object')
-      expect(config.tailConfig.encoding).to.equal('utf-16')
-
+      expect(config.logFile).to.equal('/var/tmp/file.log')
+      expect(config.outputLocation).to.equal('/var/tmp/logmoon.log')
+      expect(config.alarmPeriod).to.equal(10)
       restore()
     })
   })

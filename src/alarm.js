@@ -1,6 +1,10 @@
 const chalk = require('chalk')
 const Config = require('./config')
+const AlarmArray = require('./alarm-array')
+const Output = require('./output')
+
 const config = new Config()
+const output = new Output()
 /**
  * Alarm class, control the number of requests per second
  */
@@ -10,16 +14,10 @@ class Alarm {
    */
   constructor () {
     /**
-     * The total requests since the last iteraction
-     * @type number
+     * The queue to check the threshould
+     * @type AlarmArray
      */
-    this.requests = 0
-
-    /**
-     * The latest time the alarm was fired. The alarm should stay activated for 2 minutes
-     * @type Date
-     */
-    this.latestAlert = null
+    this.requestsQueue = new AlarmArray(config.alarmPeriod)
 
     /**
      * Variable to check if the alert has already been displayed
@@ -32,48 +30,32 @@ class Alarm {
    * Add an amount of requests to the total amount
    * @param {number} amount The number of requests to be added
    */
-  addRequest (amount) {
-    this.requests += amount
-  }
-
-  /**
-   * Clean the requests amount
-   */
-  clean () {
-    this.requests = 0
+  addRequest () {
+    this.requestsQueue.addRequest()
   }
 
   /**
    * Start the log monitoring alarm
    * @param {date} startTime The time LogMoon was started
    */
-  monitor (now) {
-    if (this.requests >= config.requestsPreSecondAlarm) {
-      this.latestAlert = new Date()
+  monitor () {
+    this.requestsQueue.updateQueue()
+    // console.log(this.requestsQueue.requestsOnPeriod, this.requestsQueue.queue.length)
+    const now = new Date()
+    if (!this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod > config.requestsPreSecondAlarm) {
+
+      const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`
+      output.alarm(message, now, true)
+
+      this.alertDisplayed = true
+    } else if (this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod <= config.requestsPreSecondAlarm) {
+      const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`
+      output.alarm(message, now, true)
+      this.alertDisplayed = false
     }
-    const twoMinutes = 2 * 1000
-    // const twoMinutes = 2 * 60 * 1000
-
-    // console.log(new Date() - this.latestAlert, twoMinutes, (new Date() - this.latestAlert) < twoMinutes)
-
-    if (this.latestAlert !== null) {
-      if ((new Date() - this.latestAlert) < twoMinutes) {
-        console.log(chalk.bgRed.red(' '.repeat(process.stdout.columns)))
-        const display = `****** ALERT! more than ${config.requestsPreSecondAlarm} requests per second! ******`
-        console.log(chalk.bgRed.white(display + ' '.repeat(process.stdout.columns - display.length)))
-        console.log(chalk.bgRed.red(' '.repeat(process.stdout.columns)))
-        this.alertDisplayed = true
-      } else if (this.alertDisplayed === true) {
-        console.log('ALERT DISABLED')
-        this.latestAlert = null
-        this.alertDisplayed = false
-      }
-    }
-
-    this.clean()
 
     setTimeout(() => {
-      this.monitor(now)
+      this.monitor()
     }, config.alarmCheckInterval)
   }
 }

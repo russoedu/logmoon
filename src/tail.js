@@ -12,7 +12,7 @@ class Tail {
    * @param {function} error the callback function on error
    */
   static start (success, error) {
-    const tail = new T(config.logFile, config.tailConfig)
+    const tail = new T(config.logFile)
 
     tail.on('line', (data) => success(data))
     tail.on('error', (e) => error(e))

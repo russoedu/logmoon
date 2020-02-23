@@ -1,7 +1,9 @@
 const Config = require('./config')
 const StatsMap = require('./stats-map')
-const Convert = require('./convert')
+const Output = require('./output')
+
 const config = new Config()
+const output = new Output()
 
 /**
  * Stats class, control and display stats data
@@ -83,23 +85,12 @@ class Stats {
       const topMethod = this.methods.top()
       const topSection = this.sections.top()
       const topStatus = this.statuses.top()
-      const formatedPrevious = `${previous.getHours()}:${previous.getMinutes()}:${previous.getSeconds()}`
-      const formatedNow = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
 
-      console.log('*'.repeat(process.stdout.columns))
       if (topSection.amount && topSection.amount > 0) {
-
-        console.log(`** REPORT FROM ${formatedPrevious} until ${formatedNow}`)
-        console.log()
-        console.log(`** MOST ACCESSED SECTION: "${topSection.value}" => ${topSection.amount} times`)
-        console.log(`** MOST USED HTTP METHOD: "${topMethod.value}" => ${topMethod.amount} times`)
-        console.log(`** MOST RESPONDED STATUS: "${topStatus.value}" => ${topStatus.amount} times`)
-        console.log(`** TOTAL REQUESTS IN THE PERIOD: ${this.totalRequests} requests`)
-        console.log(`** TOTAL TRANSFER IN THE PERIOD: ${Convert.bytes(this.totalDataTransfer)}`)
+        output.stats(previous, now, topSection, topMethod, topStatus, this.totalRequests, this.totalDataTransfer)
       } else {
-        console.log(`** no traffic  FROM ${formatedPrevious} until ${formatedNow}`)
+        output.stats(previous, now)
       }
-      console.log('*'.repeat(process.stdout.columns))
 
       // Zero the data for the next run
       this.clean()

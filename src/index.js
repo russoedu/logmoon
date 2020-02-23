@@ -10,7 +10,7 @@ const alarm = new Alarm()
 Tail.start(
   data => {
     stats.push(data)
-    alarm.addRequest(1)
+    alarm.addRequest()
   },
   error => {
     console.error(error)

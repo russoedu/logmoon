@@ -20,31 +20,34 @@ LogMoon will be installed and will be available globally in your terminal.
 
 ## Configuration
 
-LogMoon has 3 configurations that can be changed via environment variables (instructions: [Windows](https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0) | [Unix](https://www.cyberciti.biz/faq/set-environment-variable-unix/)):
+LogMoon has 4 configurations that can be changed via environment variables (instructions: [Windows](https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0) | [Unix](https://www.cyberciti.biz/faq/set-environment-variable-unix/)) or via the creation of a ```.env``` file based on the ```.env.example```:
 
 ### 1. ```STATS_DISPLAY_INTERVAL``` (seconds)
 
-The interval to display access information (TODO).
-
-*Default value is 10.* (Access information is displayed every 10 seconds);
+>The interval to display access information (TODO).
+>
+>*Default value is 10.* (Access information is displayed every 10 seconds);
 
 ### 2. ```REQUESTS_PER_SECOND_ALARM``` (requests per second)
 
-The number of requestes per second threshold witch will display an alert when reached.
+>The number of requestes per second threshold witch will display an alert when reached.
+>
+>*Default value is 10.* (Alert is displayed if 10 or more requests per second are made in the past ```LOGMOON_ALARM_PERIOD``` seconds).
 
-*Default value is 10.* (Alert is displayed if 10 or more requests per second are made in the past 2 minutes).
+### 3. ```LOGMOON_ALARM_PERIOD``` (seconds period)
+>The period where the alarm of requests per second will be tested and active.
+>
+>*Default value is 120.* (Alert is displayed if ```REQUESTS_PER_SECOND_ALARM``` or more requests per second are made in the past 2 minutes).
 
-### 3. ```LOG_FILE``` (location)
+### 3. ```LOG_FILE``` (file location)
 
-The location of the [W3C-formatted HTTP access log](https://www.w3.org/Daemon/User/Config/Logging.html).
+>The location of the [W3C-formatted HTTP access log](https://www.w3.org/Daemon/User/Config/Logging.html).
+>
+>*Default value is /tmp/access.log.* (The location from where the log file will be consumed in real time).
 
-*Default value is /tmp/access.log.* (The location from where the log file will be consumed in real time).
+### 4. ```LOGMOON_OUTPUT_LOCATION``` (file location)
 
-### 3. ```LOG_ENCODING``` (log file character encoding)
-
-The character encoding of the log file.
-
-*Default value is utf-8.* (The encoding of the log file can be changed in case your system logs with a diferent [character encoding](https://en.wikipedia.org/wiki/Character_encoding#Common_character_encodings)).
+>The location of the output file. If empty, or not present, LogMoon will not log to file, only to the terminal window
 
 ## Usage
 
@@ -77,5 +80,11 @@ npm run doc
 
 ## Future improvements
 
-- [ ] TODO
-- [ ] TODO
+- [ ] Find a less memory consumming solution for the alarm (maybe based on the average requests instead of an array)
+- [ ] Make the ```REQUESTS_PER_SECOND_ALARM``` variable according to the log frequency
+- [ ] Display an alert in a permanet position in the screen
+- [ ] Create other alerts, for instance for any status 50x or certain amount of status 40x in a period of time
+- [ ] Handle several logs
+- [ ] Create a browser output
+- [ ] Create an Electron app
+- [ ] Sending push notifications ([PushMe](https://pushme.jagcesar.se/) solution, for instance)
