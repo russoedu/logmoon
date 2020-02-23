@@ -37,7 +37,7 @@ class Config {
     this.alarmCheckInterval = 1 * 1000
 
     /**
-     * The amount of requests per second logged that should fire the alert
+     * The amount of requests per second that should fire the alert
      * @type number
      * @default 10
      */

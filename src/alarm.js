@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const Config = require('./config')
 const config = new Config()
 /**
@@ -13,6 +14,18 @@ class Alarm {
      * @type number
      */
     this.requests = 0
+
+    /**
+     * The latest time the alarm was fired. The alarm should stay activated for 2 minutes
+     * @type Date
+     */
+    this.latestAlert = null
+
+    /**
+     * Variable to check if the alert has already been displayed
+     * @type boolean
+     */
+    this.alertDisplayed = false
   }
 
   /**
@@ -35,7 +48,28 @@ class Alarm {
    * @param {date} startTime The time LogMoon was started
    */
   monitor (now) {
-    console.log('Alarm:', new Date() - now, 'miliseconds passed', this.requests, 'requests')
+    if (this.requests >= config.requestsPreSecondAlarm) {
+      this.latestAlert = new Date()
+    }
+    const twoMinutes = 2 * 1000
+    // const twoMinutes = 2 * 60 * 1000
+
+    // console.log(new Date() - this.latestAlert, twoMinutes, (new Date() - this.latestAlert) < twoMinutes)
+
+    if (this.latestAlert !== null) {
+      if ((new Date() - this.latestAlert) < twoMinutes) {
+        console.log(chalk.bgRed.red(' '.repeat(process.stdout.columns)))
+        const display = `****** ALERT! more than ${config.requestsPreSecondAlarm} requests per second! ******`
+        console.log(chalk.bgRed.white(display + ' '.repeat(process.stdout.columns - display.length)))
+        console.log(chalk.bgRed.red(' '.repeat(process.stdout.columns)))
+        this.alertDisplayed = true
+      } else if (this.alertDisplayed === true) {
+        console.log('ALERT DISABLED')
+        this.latestAlert = null
+        this.alertDisplayed = false
+      }
+    }
+
     this.clean()
 
     setTimeout(() => {

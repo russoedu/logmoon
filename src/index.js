@@ -18,4 +18,4 @@ Tail.start(
 )
 
 stats.monitor()
-// alarm.monitor()
+alarm.monitor()
