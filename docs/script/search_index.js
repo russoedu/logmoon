@@ -6,21 +6,39 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "logmoon/src/alarm-array.js~alarmarray",
+    "class/src/alarm-array.js~AlarmArray.html",
+    "<span>AlarmArray</span> <span class=\"search-result-import-path\">logmoon/src/alarm-array.js</span>",
+    "class"
+  ],
+  [
     "logmoon/src/config.js~config",
     "class/src/config.js~Config.html",
     "<span>Config</span> <span class=\"search-result-import-path\">logmoon/src/config.js</span>",
     "class"
   ],
   [
-    "logmoon/src/display.js~display",
-    "class/src/display.js~Display.html",
-    "<span>Display</span> <span class=\"search-result-import-path\">logmoon/src/display.js</span>",
+    "logmoon/src/output.js~output",
+    "class/src/output.js~Output.html",
+    "<span>Output</span> <span class=\"search-result-import-path\">logmoon/src/output.js</span>",
     "class"
   ],
   [
     "logmoon/src/stats.js~stats",
     "class/src/stats.js~Stats.html",
     "<span>Stats</span> <span class=\"search-result-import-path\">logmoon/src/stats.js</span>",
+    "class"
+  ],
+  [
+    "logmoon/src/stats-map.js~statsmap",
+    "class/src/stats-map.js~StatsMap.html",
+    "<span>StatsMap</span> <span class=\"search-result-import-path\">logmoon/src/stats-map.js</span>",
+    "class"
+  ],
+  [
+    "logmoon/src/tail.js~tail",
+    "class/src/tail.js~Tail.html",
+    "<span>Tail</span> <span class=\"search-result-import-path\">logmoon/src/tail.js</span>",
     "class"
   ],
   [
@@ -306,6 +324,48 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/alarm-array.js",
+    "file/src/alarm-array.js.html",
+    "src/alarm-array.js",
+    "file"
+  ],
+  [
+    "src/alarm-array.js~alarmarray#addrequest",
+    "class/src/alarm-array.js~AlarmArray.html#instance-method-addRequest",
+    "src/alarm-array.js~AlarmArray#addRequest",
+    "method"
+  ],
+  [
+    "src/alarm-array.js~alarmarray#constructor",
+    "class/src/alarm-array.js~AlarmArray.html#instance-constructor-constructor",
+    "src/alarm-array.js~AlarmArray#constructor",
+    "method"
+  ],
+  [
+    "src/alarm-array.js~alarmarray#maximumsize",
+    "class/src/alarm-array.js~AlarmArray.html#instance-member-maximumSize",
+    "src/alarm-array.js~AlarmArray#maximumSize",
+    "member"
+  ],
+  [
+    "src/alarm-array.js~alarmarray#requests",
+    "class/src/alarm-array.js~AlarmArray.html#instance-member-requests",
+    "src/alarm-array.js~AlarmArray#requests",
+    "member"
+  ],
+  [
+    "src/alarm-array.js~alarmarray#requestsonperiod",
+    "class/src/alarm-array.js~AlarmArray.html#instance-member-requestsOnPeriod",
+    "src/alarm-array.js~AlarmArray#requestsOnPeriod",
+    "member"
+  ],
+  [
+    "src/alarm-array.js~alarmarray#updatequeue",
+    "class/src/alarm-array.js~AlarmArray.html#instance-method-updateQueue",
+    "src/alarm-array.js~AlarmArray#updateQueue",
+    "method"
+  ],
+  [
     "src/alarm.js",
     "file/src/alarm.js.html",
     "src/alarm.js",
@@ -318,10 +378,10 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/alarm.js~alarm#clean",
-    "class/src/alarm.js~Alarm.html#instance-method-clean",
-    "src/alarm.js~Alarm#clean",
-    "method"
+    "src/alarm.js~alarm#alertdisplayed",
+    "class/src/alarm.js~Alarm.html#instance-member-alertDisplayed",
+    "src/alarm.js~Alarm#alertDisplayed",
+    "member"
   ],
   [
     "src/alarm.js~alarm#constructor",
@@ -336,9 +396,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/alarm.js~alarm#requests",
-    "class/src/alarm.js~Alarm.html#instance-member-requests",
-    "src/alarm.js~Alarm#requests",
+    "src/alarm.js~alarm#requestsqueue",
+    "class/src/alarm.js~Alarm.html#instance-member-requestsQueue",
+    "src/alarm.js~Alarm#requestsQueue",
     "member"
   ],
   [
@@ -354,6 +414,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/config.js~config#alarmperiod",
+    "class/src/config.js~Config.html#instance-member-alarmPeriod",
+    "src/config.js~Config#alarmPeriod",
+    "member"
+  ],
+  [
     "src/config.js~config#constructor",
     "class/src/config.js~Config.html#instance-constructor-constructor",
     "src/config.js~Config#constructor",
@@ -363,6 +429,12 @@ window.esdocSearchIndex = [
     "src/config.js~config#logfile",
     "class/src/config.js~Config.html#instance-member-logFile",
     "src/config.js~Config#logFile",
+    "member"
+  ],
+  [
+    "src/config.js~config#outputlocation",
+    "class/src/config.js~Config.html#instance-member-outputLocation",
+    "src/config.js~Config#outputLocation",
     "member"
   ],
   [
@@ -378,22 +450,76 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/config.js~config#tailconfig",
-    "class/src/config.js~Config.html#instance-member-tailConfig",
-    "src/config.js~Config#tailConfig",
-    "member"
-  ],
-  [
-    "src/display.js",
-    "file/src/display.js.html",
-    "src/display.js",
-    "file"
-  ],
-  [
     "src/index.js",
     "file/src/index.js.html",
     "src/index.js",
     "file"
+  ],
+  [
+    "src/output.js",
+    "file/src/output.js.html",
+    "src/output.js",
+    "file"
+  ],
+  [
+    "src/output.js~output#alarm",
+    "class/src/output.js~Output.html#instance-method-alarm",
+    "src/output.js~Output#alarm",
+    "method"
+  ],
+  [
+    "src/output.js~output#constructor",
+    "class/src/output.js~Output.html#instance-constructor-constructor",
+    "src/output.js~Output#constructor",
+    "method"
+  ],
+  [
+    "src/output.js~output#messages",
+    "class/src/output.js~Output.html#instance-member-messages",
+    "src/output.js~Output#messages",
+    "member"
+  ],
+  [
+    "src/output.js~output#outputfs",
+    "class/src/output.js~Output.html#instance-member-outputFs",
+    "src/output.js~Output#outputFs",
+    "member"
+  ],
+  [
+    "src/output.js~output#start",
+    "class/src/output.js~Output.html#instance-method-start",
+    "src/output.js~Output#start",
+    "method"
+  ],
+  [
+    "src/output.js~output#stats",
+    "class/src/output.js~Output.html#instance-method-stats",
+    "src/output.js~Output#stats",
+    "method"
+  ],
+  [
+    "src/output.js~output.convertbytes",
+    "class/src/output.js~Output.html#static-method-convertBytes",
+    "src/output.js~Output.convertBytes",
+    "method"
+  ],
+  [
+    "src/stats-map.js",
+    "file/src/stats-map.js.html",
+    "src/stats-map.js",
+    "file"
+  ],
+  [
+    "src/stats-map.js~statsmap#addone",
+    "class/src/stats-map.js~StatsMap.html#instance-method-addOne",
+    "src/stats-map.js~StatsMap#addOne",
+    "method"
+  ],
+  [
+    "src/stats-map.js~statsmap#top",
+    "class/src/stats-map.js~StatsMap.html#instance-method-top",
+    "src/stats-map.js~StatsMap#top",
+    "method"
   ],
   [
     "src/stats.js",
@@ -414,9 +540,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/stats.js~stats#logs",
-    "class/src/stats.js~Stats.html#instance-member-logs",
-    "src/stats.js~Stats#logs",
+    "src/stats.js~stats#methods",
+    "class/src/stats.js~Stats.html#instance-member-methods",
+    "src/stats.js~Stats#methods",
     "member"
   ],
   [
@@ -432,9 +558,39 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stats.js~stats#sections",
+    "class/src/stats.js~Stats.html#instance-member-sections",
+    "src/stats.js~Stats#sections",
+    "member"
+  ],
+  [
+    "src/stats.js~stats#statuses",
+    "class/src/stats.js~Stats.html#instance-member-statuses",
+    "src/stats.js~Stats#statuses",
+    "member"
+  ],
+  [
+    "src/stats.js~stats#totaldatatransfer",
+    "class/src/stats.js~Stats.html#instance-member-totalDataTransfer",
+    "src/stats.js~Stats#totalDataTransfer",
+    "member"
+  ],
+  [
+    "src/stats.js~stats#totalrequests",
+    "class/src/stats.js~Stats.html#instance-member-totalRequests",
+    "src/stats.js~Stats#totalRequests",
+    "member"
+  ],
+  [
     "src/tail.js",
     "file/src/tail.js.html",
     "src/tail.js",
     "file"
+  ],
+  [
+    "src/tail.js~tail.start",
+    "class/src/tail.js~Tail.html#static-method-start",
+    "src/tail.js~Tail.start",
+    "method"
   ]
 ]

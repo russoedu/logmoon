@@ -29,10 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/display.js~Display.html">Display</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -97,13 +100,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(reset: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Configurator constructor
+        <div data-ice="description"><p>Singleton configurator constructor
 Read all environment variables to configure the application</p>
 </div>
       </div>
@@ -134,13 +137,13 @@ Read all environment variables to configure the application</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-alarmCheckInterval">alarmCheckInterval</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-alarmCheckInterval">alarmCheckInterval</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The interval to check the requests per second in miliseconds</p>
+        <div data-ice="description"><p>The interval to check the alarm in miliseconds</p>
 </div>
       </div>
     </td>
@@ -163,7 +166,36 @@ Read all environment variables to configure the application</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-logFile">logFile</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-alarmPeriod">alarmPeriod</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The alarm interval in seconds</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-logFile">logFile</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -192,13 +224,13 @@ Read all environment variables to configure the application</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-requestsPreSecondAlarm">requestsPreSecondAlarm</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-outputLocation">outputLocation</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The amount of requests per second logged that should fire the alert</p>
+        <div data-ice="description"><p>Location of the output file.</p>
 </div>
       </div>
     </td>
@@ -221,42 +253,42 @@ Read all environment variables to configure the application</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-statsDisplayInterval">statsDisplayInterval</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-requestsPreSecondAlarm">requestsPreSecondAlarm</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The amount of requests per second that should fire the alert</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-statsDisplayInterval">statsDisplayInterval</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>The interval to display information in miliseconds</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/config.js~Config.html#instance-member-tailConfig">tailConfig</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>The configuration for the tail execution.</p>
 </div>
       </div>
     </td>
@@ -284,24 +316,42 @@ Read all environment variables to configure the application</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(reset: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber12">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber13">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Configurator constructor
+  <div data-ice="description"><p>Singleton configurator constructor
 Read all environment variables to configure the application</p>
 </div>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">reset</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: false</li></ul></td>
+      <td data-ice="description"><p>Reset the instance singleton and set the configuration again. Used for unit test purpose, only.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -332,18 +382,62 @@ Read all environment variables to configure the application</p>
     
     
     
-    <span class="code" data-ice="name">alarmCheckInterval</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">alarmCheckInterval</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber37">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>The interval to check the requests per second in miliseconds</p>
+  <div data-ice="description"><p>The interval to check the alarm in miliseconds</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-alarmPeriod">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">alarmPeriod</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber44">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The alarm interval in seconds</p>
 </div>
 
   
@@ -376,11 +470,11 @@ Read all environment variables to configure the application</p>
     
     
     
-    <span class="code" data-ice="name">logFile</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">logFile</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber48">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber64">source</a></span></span>
     </span>
   </h3>
 
@@ -413,6 +507,50 @@ Read all environment variables to configure the application</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-outputLocation">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">outputLocation</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber73">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Location of the output file. If empty, or not present, LogMoon will not log to file</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-member-requestsPreSecondAlarm">
     <span class="access" data-ice="access">public</span>
     
@@ -420,18 +558,18 @@ Read all environment variables to configure the application</p>
     
     
     
-    <span class="code" data-ice="name">requestsPreSecondAlarm</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">requestsPreSecondAlarm</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>The amount of requests per second logged that should fire the alert</p>
+  <div data-ice="description"><p>The amount of requests per second that should fire the alert</p>
 </div>
 
   
@@ -464,11 +602,11 @@ Read all environment variables to configure the application</p>
     
     
     
-    <span class="code" data-ice="name">statsDisplayInterval</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">statsDisplayInterval</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber27">source</a></span></span>
     </span>
   </h3>
 
@@ -476,50 +614,6 @@ Read all environment variables to configure the application</p>
   
   
   <div data-ice="description"><p>The interval to display information in miliseconds</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-tailConfig">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">tailConfig</span><span class="code" data-ice="signature">: <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/config.js.html#lineNumber56">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>The configuration for the tail execution. Used to define the char encoding of the log file</p>
 </div>
 
   

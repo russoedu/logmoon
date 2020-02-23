@@ -29,10 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/display.js~Display.html">Display</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -46,15 +49,26 @@
 <h2 id="installation">Installation</h2><p>You can install LogMoon as a global NPM package by running</p>
 <pre><code><code class="source-code prettyprint">npm i -g logmoon</code>
 </code></pre><p>LogMoon will be installed and will be available globally in your terminal.</p>
-<h2 id="configuration">Configuration</h2><p>LogMoon has 3 configurations that can be changed via environment variables (instructions: <a href="https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0">Windows</a> | <a href="https://www.cyberciti.biz/faq/set-environment-variable-unix/">Unix</a>):</p>
-<h3 id="1---code-stats-display-interval--code---seconds-">1. <code>STATS_DISPLAY_INTERVAL</code> (seconds)</h3><p>The interval to display access information (TODO).</p>
+<h2 id="configuration">Configuration</h2><p>LogMoon has 4 configurations that can be changed via environment variables (instructions: <a href="https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0">Windows</a> | <a href="https://www.cyberciti.biz/faq/set-environment-variable-unix/">Unix</a>) or via the creation of a <code>.env</code> file based on the <code>.env.example</code>:</p>
+<h3 id="1---code-stats-display-interval--code---seconds-">1. <code>STATS_DISPLAY_INTERVAL</code> (seconds)</h3><blockquote>
+<p>The interval to display access information (TODO).</p>
 <p><em>Default value is 10.</em> (Access information is displayed every 10 seconds);</p>
-<h3 id="2---code-requests-per-second-alarm--code---requests-per-second-">2. <code>REQUESTS_PER_SECOND_ALARM</code> (requests per second)</h3><p>The number of requestes per second threshold witch will display an alert when reached.</p>
-<p><em>Default value is 10.</em> (Alert is displayed if 10 or more requests per second are made in the past 2 minutes).</p>
-<h3 id="3---code-log-file--code---location-">3. <code>LOG_FILE</code> (location)</h3><p>The location of the <a href="https://www.w3.org/Daemon/User/Config/Logging.html">W3C-formatted HTTP access log</a>.</p>
+</blockquote>
+<h3 id="2---code-requests-per-second-alarm--code---requests-per-second-">2. <code>REQUESTS_PER_SECOND_ALARM</code> (requests per second)</h3><blockquote>
+<p>The number of requestes per second threshold witch will display an alert when reached.</p>
+<p><em>Default value is 10.</em> (Alert is displayed if 10 or more requests per second are made in the past <code>LOGMOON_ALARM_PERIOD</code> seconds).</p>
+</blockquote>
+<h3 id="3---code-logmoon-alarm-period--code---seconds-period-">3. <code>LOGMOON_ALARM_PERIOD</code> (seconds period)</h3><blockquote>
+<p>The period where the alarm of requests per second will be tested and active.</p>
+<p><em>Default value is 120.</em> (Alert is displayed if <code>REQUESTS_PER_SECOND_ALARM</code> or more requests per second are made in the past 2 minutes).</p>
+</blockquote>
+<h3 id="3---code-log-file--code---file-location-">3. <code>LOG_FILE</code> (file location)</h3><blockquote>
+<p>The location of the <a href="https://www.w3.org/Daemon/User/Config/Logging.html">W3C-formatted HTTP access log</a>.</p>
 <p><em>Default value is /tmp/access.log.</em> (The location from where the log file will be consumed in real time).</p>
-<h3 id="3---code-log-encoding--code---log-file-character-encoding-">3. <code>LOG_ENCODING</code> (log file character encoding)</h3><p>The character encoding of the log file.</p>
-<p><em>Default value is utf-8.</em> (The encoding of the log file can be changed in case your system logs with a diferent <a href="https://en.wikipedia.org/wiki/Character_encoding#Common_character_encodings">character encoding</a>).</p>
+</blockquote>
+<h3 id="4---code-logmoon-output-location--code---file-location-">4. <code>LOGMOON_OUTPUT_LOCATION</code> (file location)</h3><blockquote>
+<p>The location of the output file. If empty, or not present, LogMoon will not log to file, only to the terminal window</p>
+</blockquote>
 <h2 id="usage">Usage</h2><p>In order to use LogMoon, you can execute the following on the terminal:</p>
 <pre><code><code class="source-code prettyprint">logmoon</code>
 </code></pre><p>LogMoon should start running and displaying the information from your server log file.</p>
@@ -64,10 +78,16 @@
 </code></pre><p>To run the tests:</p>
 <pre><code><code class="source-code prettyprint">npm test</code>
 </code></pre><p>To generate the documentation:</p>
-<pre><code><code class="source-code prettyprint">npm doc</code>
+<pre><code><code class="source-code prettyprint">npm run doc</code>
 </code></pre><h2 id="future-improvements">Future improvements</h2><ul>
-<li>[ ] TODO</li>
-<li>[ ] TODO</li>
+<li>[ ] Find a less memory consumming solution for the alarm (maybe based on the average requests instead of an array)</li>
+<li>[ ] Make the <code>REQUESTS_PER_SECOND_ALARM</code> variable according to the log frequency</li>
+<li>[ ] Display an alert in a permanet position in the screen</li>
+<li>[ ] Create other alerts, for instance for any status 50x or certain amount of status 40x in a period of time</li>
+<li>[ ] Handle several logs</li>
+<li>[ ] Create a browser output</li>
+<li>[ ] Create an Electron app</li>
+<li>[ ] Sending push notifications (<a href="https://pushme.jagcesar.se/">PushMe</a> solution, for instance)</li>
 </ul>
 </div>
 </div>

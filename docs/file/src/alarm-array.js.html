@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/alarm.js | LogMoon</title>
+  <title data-ice="title">src/alarm-array.js | LogMoon</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -40,65 +40,58 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/alarm.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const chalk = require(&apos;chalk&apos;)
-const Config = require(&apos;./config&apos;)
-const AlarmArray = require(&apos;./alarm-array&apos;)
-const Output = require(&apos;./output&apos;)
-
-const config = new Config()
-const output = new Output()
-/**
- * Alarm class, control the number of requests per second
+<div class="content" data-ice="content"><h1 data-ice="title">src/alarm-array.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * AlarmArray class
+ * @extends Array
  */
-class Alarm {
+class AlarmArray extends Array {
   /**
-   * Constructor function
+   * Creates a new instance
+   * @param {number} maximumSize the maximum size of the array - relates to the Alarm monitoring time
    */
-  constructor () {
+  constructor (maximumSize) {
+    super()
     /**
-     * The queue to check the threshould
-     * @type {AlarmArray}
+     * The total number of requests stored since the last update
+     * @type {number}
      */
-    this.requestsQueue = new AlarmArray(config.alarmPeriod)
+    this.requests = 0
 
     /**
-     * Variable to check if the alert has already been displayed
-     * @type {boolean}
+     * The maximum size of the array
+     * @type {number}
      */
-    this.alertDisplayed = false
+    this.maximumSize = maximumSize
+
+    /**
+     * The total requests on the alarm monitoring period
+     * @type {number}
+     */
+    this.requestsOnPeriod = 0
   }
 
   /**
-   * Add a new request to the total requests amount
+   * Add a request
    */
   addRequest () {
-    this.requestsQueue.addRequest()
+    this.requests += 1
   }
 
   /**
-   * Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds
+   * Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`
    */
-  monitor () {
-    this.requestsQueue.updateQueue()
-    const now = new Date()
-    if (!this.alertDisplayed &amp;&amp; this.requestsQueue.requestsOnPeriod / config.alarmPeriod &gt; config.requestsPreSecondAlarm) {
-      const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`
-      output.alarm(message, now, true)
-      this.alertDisplayed = true
-    } else if (this.alertDisplayed &amp;&amp; this.requestsQueue.requestsOnPeriod / config.alarmPeriod &lt;= config.requestsPreSecondAlarm) {
-      const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`
-      output.alarm(message, now, true)
-      this.alertDisplayed = false
+  updateQueue () {
+    this.push(this.requests)
+    this.requestsOnPeriod += this.requests
+    if (this.length &gt; this.maximumSize) {
+      this.requestsOnPeriod -= this.shift()
     }
-
-    setTimeout(() =&gt; {
-      this.monitor()
-    }, config.alarmCheckInterval)
+    this.requests = 0
   }
 }
 
-module.exports = Alarm
+module.exports = AlarmArray
 </code></pre>
 
 </div>

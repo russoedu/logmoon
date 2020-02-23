@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/output.js | LogMoon</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="HTTP log monitoring console program"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="LogMoon"><meta property="twitter:description" content="HTTP log monitoring console program"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/russoedu/logmoon"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/output.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const chalk = require(&apos;chalk&apos;)
+const fs = require(&apos;fs&apos;)
+const Config = require(&apos;./config&apos;)
+
+const config = new Config()
+
+/**
+ * Output class
+ * Output data to the terminal and to the optional result file
+ */
+class Output {
+  constructor () {
+    /**
+     * The output openSync with the output file location data OR false if outputLocation is not set or set as &apos;false&apos;
+     * @type {number|boolean}
+     */
+    this.outputFs = config.outputLocation === &apos;false&apos; ? false : fs.openSync(config.outputLocation, &apos;a&apos;)
+
+    /**
+     * The array to store the text to be logged or saved to file
+     * @type {array}
+     */
+    this.messages = []
+  }
+
+  /**
+   * Initial output message
+   */
+  start () {
+    const startMessage = `LogMoon HTTP Log Monitoring started: ${new Date()}`
+    const spacingBefore = Math.floor((process.stdout.columns - startMessage.length) / 2) - 1
+    const spacingAfter = process.stdout.columns - (startMessage.length + spacingBefore + 2)
+
+    console.log(spacingBefore, spacingAfter)
+
+    this.messages = [
+      `+${&apos;-&apos;.repeat(process.stdout.columns - 2)}+`,
+      `|${&apos; &apos;.repeat(spacingBefore)}${startMessage}${&apos; &apos;.repeat(spacingAfter)}|`,
+      `+${&apos;-&apos;.repeat(process.stdout.columns - 2)}+`,
+      &apos;&apos;
+    ]
+    this.messages.forEach(message =&gt; {
+      console.log(chalk.bgBlue.white.bold(message))
+      if (this.outputFs !== false) {
+        fs.writeSync(this.outputFs, `${message}\n`)
+      }
+    })
+  }
+
+  /**
+   * Display a message in the terminal and, optionally, save it in the output file
+   * @param {date} initialTime The initial time of the stats
+   * @param {date} currentTime The current time, when the message is being displayed
+   * @param {object} topSection The object with the most accessed section, with value and amount
+   * @param {object} topMethod The object with the most accessed HTTP method, with value and amount
+   * @param {object} topStatus The object with the most accessed HTTP response status, with value and amount
+   * @param {number} totalRequests The total amount of requests
+   * @param {number} totalDataTransfer The total data transfered, in bytes
+   */
+  stats (initialTime, currentTime, topSection, topMethod, topStatus, totalRequests, totalDataTransfer) {
+    if (typeof topSection !== &apos;undefined&apos;) {
+      this.messages = [
+        &apos;-&apos;.repeat(process.stdout.columns),
+        `REPORT FROM ${initialTime} until ${currentTime}`,
+        &apos;&apos;,
+        `MOST ACCESSED SECTION: &quot;${topSection.value}&quot; =&gt; ${topSection.amount} times`,
+        `MOST USED HTTP METHOD: &quot;${topMethod.value}&quot; =&gt; ${topMethod.amount} times`,
+        `MOST RESPONDED STATUS: &quot;${topStatus.value}&quot; =&gt; ${topStatus.amount} times`,
+        `TOTAL REQUESTS IN THE PERIOD: ${totalRequests} requests`,
+        `TOTAL TRANSFER IN THE PERIOD: ${Output.convertBytes(totalDataTransfer)}`,
+        &apos;-&apos;.repeat(process.stdout.columns)
+      ]
+    } else {
+      this.messages = [
+        &apos;-&apos;.repeat(process.stdout.columns),
+        `no traffic  FROM ${initialTime} until ${currentTime}`,
+        &apos;-&apos;.repeat(process.stdout.columns)
+      ]
+    }
+    this.messages.forEach(message =&gt; {
+      console.log(message)
+      if (this.outputFs !== false) {
+        fs.writeSync(this.outputFs, `${message}\n`)
+      }
+    })
+  }
+
+  /**
+   * Display an alert message in the terminal and, optionally, save it in the output file
+   * @param {string} text The text to be displayed
+   * @param {boolean} alertOn If true, it&apos;s the alert being turned on, if false, the alert is being turned off
+   */
+  alarm (text, alertOn = false) {
+    const bgColour = alertOn ? &apos;bgRed&apos; : &apos;bgGreen&apos;
+    const colour = alertOn ? &apos;white&apos; : &apos;black&apos;
+    this.messages = [
+      &apos;*&apos;.repeat(process.stdout.columns),
+      text + &apos;*&apos;.repeat(process.stdout.columns - text.length),
+      &apos;*&apos;.repeat(process.stdout.columns)
+    ]
+
+    this.messages.forEach(message =&gt; {
+      console.log(chalk[bgColour][colour](message))
+      if (this.outputFs !== false) {
+        fs.writeSync(this.outputFs, `${message}\n`)
+      }
+    })
+  }
+
+  /**
+   * Convert bytes into KB, MB, GB or TB, depending on the amount of bytes
+   * @param {number} bytes the bytes to be converted
+   */
+  static convertBytes (bytes) {
+    if (bytes === 0) return &apos;0 Bytes&apos;
+
+    const sizes = [&apos;Bytes&apos;, &apos;KB&apos;, &apos;MB&apos;, &apos;GB&apos;, &apos;TB&apos;]
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+
+    return Math.round(bytes / Math.pow(1024, i), 2) + &apos; &apos; + sizes[i]
+  }
+}
+
+module.exports = Output
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

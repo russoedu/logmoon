@@ -29,35 +29,117 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/display.js~Display.html">Display</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/stats.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const Config = require(&apos;./config&apos;)
+const StatsMap = require(&apos;./stats-map&apos;)
+const Output = require(&apos;./output&apos;)
+
 const config = new Config()
+const output = new Output()
 
+/**
+ * Stats class, control and display stats data
+ */
 class Stats {
+  /**
+   * Constructor function
+   */
   constructor () {
-    this.logs = []
+    /**
+     * The StatsMap of the log methods
+     * @type StatsMap
+     */
+    this.methods = new StatsMap()
+
+    /**
+     * The StatsMap of the log sections
+     * @type StatsMap
+     */
+    this.sections = new StatsMap()
+
+    /**
+     * The StatsMap of the log statuses
+     * @type StatsMap
+     */
+    this.statuses = new StatsMap()
+
+    /**
+     * The total transfered bytes
+     * @type number
+     */
+    this.totalDataTransfer = 0
+
+    /**
+     * The total number of requests
+     * @type number
+     */
+    this.totalRequests = 0
   }
 
+  /**
+   * Add a new line of data to the logs array
+   * @param {string} data The line of data read from the log
+   * Example of data: 127.0.0.1 - - [23/Feb/2020:10:16:44 +0000] &quot;GET /user/charles HTTP/1.1&quot; 200 246
+   */
   push (data) {
-    this.logs.push(data)
+    const entryRegEx = /[0-9.]+ [A-Za-z-]+ [A-Za-z-]+ \[.+\] &quot;(.+) \/([^/]*)\/?[^ ]* [^ ]* ([0-9]+) ([0-9]+)/
+    //                                                        ^      ^                     ^        ^
+    // Capture Groups                                         1      2                     3        4
+    //                                                        method section               status   dataTransfer
+    const match = data.match(entryRegEx)
+
+    this.methods.addOne(match[1])
+    this.sections.addOne(match[2])
+    this.statuses.addOne(match[3])
+    this.totalDataTransfer += Number(match[4])
+    this.totalRequests += 1
   }
 
+  /**
+   * Clean the maps and zero the total data transfer and total requests
+   */
   clean () {
-    this.logs = []
+    this.methods.clear()
+    this.sections.clear()
+    this.statuses.clear()
+    this.totalDataTransfer = 0
+    this.totalRequests = 0
   }
 
-  monitor (now) {
-    console.log(&apos;Stats:&apos;, new Date() - now, &apos;miliseconds passed&apos;, this.logs.length, &apos;entries&apos;)
-    this.clean()
+  /**
+   * Start the log monitoring
+   * @param {date} [previous=false] The previous time the function was executed
+   */
+  monitor (previous = false) {
+    const now = new Date()
+    // Just execute the function if a previous period of data was captured
+    if (previous) {
+      const topMethod = this.methods.top()
+      const topSection = this.sections.top()
+      const topStatus = this.statuses.top()
 
+      if (topSection.amount &amp;&amp; topSection.amount &gt; 0) {
+        output.stats(previous, now, topSection, topMethod, topStatus, this.totalRequests, this.totalDataTransfer)
+      } else {
+        output.stats(previous, now)
+      }
+
+      // Zero the data for the next run
+      this.clean()
+    }
+
+    // Pause for the statsDisplayInterval amount
     setTimeout(() =&gt; {
       this.monitor(now)
     }, config.statsDisplayInterval)

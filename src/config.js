@@ -6,11 +6,12 @@ let instance = null
  */
 class Config {
   /**
-   * Configurator constructor
+   * Singleton configurator constructor
    * Read all environment variables to configure the application
-   * @param {boolean} reset Reset the instance singleton and set the configuration again. Used for unit test purpose, only.
+   * @param {boolean} [reset=false] Reset the instance singleton and set the configuration again. Used for unit test purpose, only.
    */
   constructor (reset = false) {
+    // Singleton reset
     if (reset === true) {
       instance = null
     }
@@ -66,7 +67,7 @@ class Config {
 
     /**
      * Location of the output file. If empty, or not present, LogMoon will not log to file
-     * @type {string || boolean}
+     * @type {string|boolean}
      * @default false
      */
     this.outputLocation = typeof process.env.LOGMOON_OUTPUT_LOCATION === 'undefined' ||

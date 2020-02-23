@@ -29,22 +29,25 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/display.js~Display.html">Display</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Stats from &apos;<span><a href="file/src/stats.js.html#lineNumber4">logmoon/src/stats.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Stats from &apos;<span><a href="file/src/stats.js.html#lineNumber11">logmoon/src/stats.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/stats.js.html#lineNumber4">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/stats.js.html#lineNumber11">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -64,7 +67,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Stats class, control and display stats data</p>
+</div>
   
 
   
@@ -102,7 +106,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Constructor function</p>
+</div>
       </div>
     </td>
     <td>
@@ -131,13 +136,130 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-member-logs">logs</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-member-methods">methods</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>The StatsMap of the log methods</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-member-sections">sections</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>The StatsMap of the log sections</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-member-statuses">statuses</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The StatsMap of the log statuses</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-member-totalDataTransfer">totalDataTransfer</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The total transfered bytes</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-member-totalRequests">totalRequests</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The total number of requests</p>
+</div>
       </div>
     </td>
     <td>
@@ -172,7 +294,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Clean the maps and zero the total data transfer and total requests</p>
+</div>
       </div>
     </td>
     <td>
@@ -194,13 +317,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-method-monitor">monitor</a></span></span><span class="code" data-ice="signature">(now: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-method-monitor">monitor</a></span></span><span class="code" data-ice="signature">(previous: <span>date</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Start the log monitoring</p>
+</div>
       </div>
     </td>
     <td>
@@ -222,13 +346,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-method-push">push</a></span></span><span class="code" data-ice="signature">(data: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/stats.js~Stats.html#instance-method-push">push</a></span></span><span class="code" data-ice="signature">(data: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Add a new line of data to the logs array</p>
+</div>
       </div>
     </td>
     <td>
@@ -258,14 +383,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber5">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber15">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Constructor function</p>
+</div>
 
   
 
@@ -293,25 +419,202 @@
 <div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-logs">
+  <h3 data-ice="anchor" id="instance-member-methods">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">logs</span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+    <span class="code" data-ice="name">methods</span><span class="code" data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber6">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber20">source</a></span></span>
     </span>
   </h3>
 
   
   
   
+  <div data-ice="description"><p>The StatsMap of the log methods</p>
+</div>
+
   
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-sections">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">sections</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber26">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The StatsMap of the log sections</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-statuses">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">statuses</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber32">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The StatsMap of the log statuses</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-totalDataTransfer">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">totalDataTransfer</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber38">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The total transfered bytes</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-totalRequests">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">totalRequests</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber44">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The total number of requests</p>
+</div>
 
   
 
@@ -350,14 +653,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Clean the maps and zero the total data transfer and total requests</p>
+</div>
 
   
 
@@ -389,18 +693,19 @@
     
     
     
-    <span class="code" data-ice="name">monitor</span><span class="code" data-ice="signature">(now: <span>*</span>)</span>
+    <span class="code" data-ice="name">monitor</span><span class="code" data-ice="signature">(previous: <span>date</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber81">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Start the log monitoring</p>
+</div>
 
   
 
@@ -413,10 +718,12 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">now</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="name" class="code" data-depth="0">previous</td>
+      <td data-ice="type" class="code"><span>date</span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: false</li></ul></td>
+      <td data-ice="description"><p>The previous time the function was executed</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -448,18 +755,19 @@
     
     
     
-    <span class="code" data-ice="name">push</span><span class="code" data-ice="signature">(data: <span>*</span>)</span>
+    <span class="code" data-ice="name">push</span><span class="code" data-ice="signature">(data: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber9">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stats.js.html#lineNumber52">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Add a new line of data to the logs array</p>
+</div>
 
   
 
@@ -473,9 +781,11 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">data</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The line of data read from the log
+Example of data: 127.0.0.1 - - [23/Feb/2020:10:16:44 +0000] &quot;GET /user/charles HTTP/1.1&quot; 200 246</p>
+</td>
     </tr>
 </tbody>
   </table>

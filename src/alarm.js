@@ -15,38 +15,33 @@ class Alarm {
   constructor () {
     /**
      * The queue to check the threshould
-     * @type AlarmArray
+     * @type {AlarmArray}
      */
     this.requestsQueue = new AlarmArray(config.alarmPeriod)
 
     /**
      * Variable to check if the alert has already been displayed
-     * @type boolean
+     * @type {boolean}
      */
     this.alertDisplayed = false
   }
 
   /**
-   * Add an amount of requests to the total amount
-   * @param {number} amount The number of requests to be added
+   * Add a new request to the total requests amount
    */
   addRequest () {
     this.requestsQueue.addRequest()
   }
 
   /**
-   * Start the log monitoring alarm
-   * @param {date} startTime The time LogMoon was started
+   * Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds
    */
   monitor () {
     this.requestsQueue.updateQueue()
-    // console.log(this.requestsQueue.requestsOnPeriod, this.requestsQueue.queue.length)
     const now = new Date()
     if (!this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod > config.requestsPreSecondAlarm) {
-
       const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`
       output.alarm(message, now, true)
-
       this.alertDisplayed = true
     } else if (this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod <= config.requestsPreSecondAlarm) {
       const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`

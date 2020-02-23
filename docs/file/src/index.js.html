@@ -29,10 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/display.js~Display.html">Display</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -40,26 +43,29 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">#!/usr/bin/env node
 
-const tail = require(&apos;./tail&apos;)
+const Tail = require(&apos;./tail&apos;)
+const Output = require(&apos;./output&apos;)
 const Stats = require(&apos;./stats&apos;)
 const Alarm = require(&apos;./alarm&apos;)
 
 const stats = new Stats()
 const alarm = new Alarm()
+const output = new Output()
 
-const now = new Date()
+output.start()
 
-tail.on(&apos;line&apos;, (data) =&gt; {
-  stats.push(data)
-  alarm.addRequest(1)
-})
+Tail.start(
+  data =&gt; {
+    stats.push(data)
+    alarm.addRequest()
+  },
+  error =&gt; {
+    console.error(error)
+  }
+)
 
-tail.on(&apos;error&apos;, (error) =&gt; {
-  console.error(error)
-})
-
-stats.monitor(now)
-alarm.monitor(now)
+stats.monitor()
+alarm.monitor()
 </code></pre>
 
 </div>

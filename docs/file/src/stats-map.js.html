@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/alarm.js | LogMoon</title>
+  <title data-ice="title">src/stats-map.js | LogMoon</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -40,65 +40,39 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/alarm.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const chalk = require(&apos;chalk&apos;)
-const Config = require(&apos;./config&apos;)
-const AlarmArray = require(&apos;./alarm-array&apos;)
-const Output = require(&apos;./output&apos;)
-
-const config = new Config()
-const output = new Output()
-/**
- * Alarm class, control the number of requests per second
+<div class="content" data-ice="content"><h1 data-ice="title">src/stats-map.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Stats Map class
+ * @extends Map
  */
-class Alarm {
+class StatsMap extends Map {
   /**
-   * Constructor function
+   * Add 1 to the item mapped on index. If the index doesn&apos;t exist, create the item and set it&apos;s count as 1
+   * @param {string} index The index of the data to be added
    */
-  constructor () {
-    /**
-     * The queue to check the threshould
-     * @type {AlarmArray}
-     */
-    this.requestsQueue = new AlarmArray(config.alarmPeriod)
-
-    /**
-     * Variable to check if the alert has already been displayed
-     * @type {boolean}
-     */
-    this.alertDisplayed = false
+  addOne (index) {
+    const data = this.get(index)
+    this.set(index, typeof data !== &apos;undefined&apos; ? data + 1 : 1)
   }
 
   /**
-   * Add a new request to the total requests amount
+   * Retrive the item that has more occurences and the amount of occurrences
    */
-  addRequest () {
-    this.requestsQueue.addRequest()
-  }
+  top () {
+    let topMethod = [null, 0]
 
-  /**
-   * Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds
-   */
-  monitor () {
-    this.requestsQueue.updateQueue()
-    const now = new Date()
-    if (!this.alertDisplayed &amp;&amp; this.requestsQueue.requestsOnPeriod / config.alarmPeriod &gt; config.requestsPreSecondAlarm) {
-      const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`
-      output.alarm(message, now, true)
-      this.alertDisplayed = true
-    } else if (this.alertDisplayed &amp;&amp; this.requestsQueue.requestsOnPeriod / config.alarmPeriod &lt;= config.requestsPreSecondAlarm) {
-      const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`
-      output.alarm(message, now, true)
-      this.alertDisplayed = false
+    if (this.size &gt; 0) {
+      // Use the array reduce method to retrieve the bigger value. Iterates each item and always stay with the bigger item
+      topMethod = [...this.entries()].reduce((previous, current) =&gt; current[1] &gt; previous[1] ? current : previous)
     }
-
-    setTimeout(() =&gt; {
-      this.monitor()
-    }, config.alarmCheckInterval)
+    return {
+      value: topMethod[0],
+      amount: topMethod[1]
+    }
   }
 }
 
-module.exports = Alarm
+module.exports = StatsMap
 </code></pre>
 
 </div>

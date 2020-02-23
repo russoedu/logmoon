@@ -29,10 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/display.js~Display.html">Display</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tail.js~Tail.html">Tail</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -43,20 +46,23 @@ const Config = require(&apos;./config&apos;)
 const config = new Config()
 
 /**
- * Tail class
- * Read the log stream
+ * Tail class, reads the log stream
  */
 class Tail {
   /**
-   * Returns a new Tail caller, responsible for reading the log file in real time
+   * Starts the log tail
+   * @param {function} success the callback function on data read success
+   * @param {function} error the callback function on error
    */
-  static run () {
-    console.log(config)
-    return new T(config.logFile, config.tailConfig)
+  static start (success, error) {
+    const tail = new T(config.logFile)
+
+    tail.on(&apos;line&apos;, (data) =&gt; success(data))
+    tail.on(&apos;error&apos;, (e) =&gt; error(e))
   }
 }
 
-module.exports = Tail.run()
+module.exports = Tail
 </code></pre>
 
 </div>

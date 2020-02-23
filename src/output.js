@@ -12,7 +12,7 @@ class Output {
   constructor () {
     /**
      * The output openSync with the output file location data OR false if outputLocation is not set or set as 'false'
-     * @type {number || boolean}
+     * @type {number|boolean}
      */
     this.outputFs = config.outputLocation === 'false' ? false : fs.openSync(config.outputLocation, 'a')
 
@@ -21,6 +21,30 @@ class Output {
      * @type {array}
      */
     this.messages = []
+  }
+
+  /**
+   * Initial output message
+   */
+  start () {
+    const startMessage = `LogMoon HTTP Log Monitoring started: ${new Date()}`
+    const spacingBefore = Math.floor((process.stdout.columns - startMessage.length) / 2) - 1
+    const spacingAfter = process.stdout.columns - (startMessage.length + spacingBefore + 2)
+
+    console.log(spacingBefore, spacingAfter)
+
+    this.messages = [
+      `+${'-'.repeat(process.stdout.columns - 2)}+`,
+      `|${' '.repeat(spacingBefore)}${startMessage}${' '.repeat(spacingAfter)}|`,
+      `+${'-'.repeat(process.stdout.columns - 2)}+`,
+      ''
+    ]
+    this.messages.forEach(message => {
+      console.log(chalk.bgBlue.white.bold(message))
+      if (this.outputFs !== false) {
+        fs.writeSync(this.outputFs, `${message}\n`)
+      }
+    })
   }
 
   /**
@@ -64,10 +88,9 @@ class Output {
   /**
    * Display an alert message in the terminal and, optionally, save it in the output file
    * @param {string} text The text to be displayed
-   * @param {date} time The current time, when the message is being displayed
    * @param {boolean} alertOn If true, it's the alert being turned on, if false, the alert is being turned off
    */
-  alarm (text, time, alertOn = false) {
+  alarm (text, alertOn = false) {
     const bgColour = alertOn ? 'bgRed' : 'bgGreen'
     const colour = alertOn ? 'white' : 'black'
     this.messages = [

@@ -1,5 +1,6 @@
 /**
  * Stats Map class
+ * @extends Map
  */
 class StatsMap extends Map {
   /**
@@ -18,7 +19,8 @@ class StatsMap extends Map {
     let topMethod = [null, 0]
 
     if (this.size > 0) {
-      topMethod = [...this.entries()].reduce((a, e) => e[1] > a[1] ? e : a)
+      // Use the array reduce method to retrieve the bigger value. Iterates each item and always stay with the bigger item
+      topMethod = [...this.entries()].reduce((previous, current) => current[1] > previous[1] ? current : previous)
     }
     return {
       value: topMethod[0],

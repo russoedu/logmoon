@@ -59,12 +59,12 @@ class Stats {
     this.methods.addOne(match[1])
     this.sections.addOne(match[2])
     this.statuses.addOne(match[3])
-    this.totalRequests += 1
     this.totalDataTransfer += Number(match[4])
+    this.totalRequests += 1
   }
 
   /**
-   * Clean the maps and zero the total data transfer
+   * Clean the maps and zero the total data transfer and total requests
    */
   clean () {
     this.methods.clear()
@@ -76,7 +76,7 @@ class Stats {
 
   /**
    * Start the log monitoring
-   * @param {date} previous The previous time the function was executed
+   * @param {date} [previous=false] The previous time the function was executed
    */
   monitor (previous = false) {
     const now = new Date()
