@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/alarm-array.js",
-    "content": "/**\n * AlarmArray class\n * @extends Array\n */\nclass AlarmArray extends Array {\n  /**\n   * Creates a new instance\n   * @param {number} maximumSize the maximum size of the array - relates to the Alarm monitoring time\n   */\n  constructor (maximumSize) {\n    super()\n    /**\n     * The total number of requests stored since the last update\n     * @type {number}\n     */\n    this.requests = 0\n\n    /**\n     * The maximum size of the array\n     * @type {number}\n     */\n    this.maximumSize = maximumSize\n\n    /**\n     * The total requests on the alarm monitoring period\n     * @type {number}\n     */\n    this.requestsOnPeriod = 0\n  }\n\n  /**\n   * Add a request\n   */\n  addRequest () {\n    this.requests += 1\n  }\n\n  /**\n   * Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`\n   */\n  updateQueue () {\n    this.push(this.requests)\n    this.requestsOnPeriod += this.requests\n    if (this.length > this.maximumSize) {\n      this.requestsOnPeriod -= this.shift()\n    }\n    this.requests = 0\n  }\n}\n\nmodule.exports = AlarmArray\n",
+    "content": "/**\n * AlarmArray class\n * @extends {Array}\n */\nclass AlarmArray extends Array {\n  /**\n   * Creates a new instance\n   * @param {number} maximumSize the maximum size of the array - relates to the Alarm monitoring time\n   */\n  constructor (maximumSize) {\n    super()\n    /**\n     * The total number of requests stored since the last update\n     * @type {number}\n     */\n    this.requests = 0\n\n    /**\n     * The maximum size of the array\n     * @type {number}\n     */\n    this.maximumSize = maximumSize\n\n    /**\n     * The total requests on the alarm monitoring period\n     * @type {number}\n     */\n    this.requestsOnPeriod = 0\n  }\n\n  /**\n   * Add a request\n   */\n  addRequest () {\n    this.requests += 1\n  }\n\n  /**\n   * Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`\n   */\n  updateQueue () {\n    this.push(this.requests)\n    this.requestsOnPeriod += this.requests\n    if (this.length > this.maximumSize) {\n      this.requestsOnPeriod -= this.shift()\n    }\n    this.requests = 0\n  }\n}\n\nmodule.exports = AlarmArray\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/alarm-array.js",
     "access": "public",
@@ -589,7 +589,7 @@
     "lineNumber": 5,
     "interface": false,
     "extends": [
-      "*"
+      "Array"
     ]
   },
   {
@@ -1423,7 +1423,7 @@
     "__docId__": 99,
     "kind": "file",
     "name": "src/stats-map.js",
-    "content": "/**\n * Stats Map class\n * @extends Map\n */\nclass StatsMap extends Map {\n  /**\n   * Add 1 to the item mapped on index. If the index doesn't exist, create the item and set it's count as 1\n   * @param {string} index The index of the data to be added\n   */\n  addOne (index) {\n    const data = this.get(index)\n    this.set(index, typeof data !== 'undefined' ? data + 1 : 1)\n  }\n\n  /**\n   * Retrive the item that has more occurences and the amount of occurrences\n   */\n  top () {\n    let topMethod = [null, 0]\n\n    if (this.size > 0) {\n      // Use the array reduce method to retrieve the bigger value. Iterates each item and always stay with the bigger item\n      topMethod = [...this.entries()].reduce((previous, current) => current[1] > previous[1] ? current : previous)\n    }\n    return {\n      value: topMethod[0],\n      amount: topMethod[1]\n    }\n  }\n}\n\nmodule.exports = StatsMap\n",
+    "content": "/**\n * Stats Map class\n * @extends {Map}\n */\nclass StatsMap extends Map {\n  /**\n   * Add 1 to the item mapped on index. If the index doesn't exist, create the item and set it's count as 1\n   * @param {string} index The index of the data to be added\n   */\n  addOne (index) {\n    const data = this.get(index)\n    this.set(index, typeof data !== 'undefined' ? data + 1 : 1)\n  }\n\n  /**\n   * Retrive the item that has more occurences and the amount of occurrences\n   */\n  top () {\n    let topMethod = [null, 0]\n\n    if (this.size > 0) {\n      // Use the array reduce method to retrieve the bigger value. Iterates each item and always stay with the bigger item\n      topMethod = [...this.entries()].reduce((previous, current) => current[1] > previous[1] ? current : previous)\n    }\n    return {\n      value: topMethod[0],\n      amount: topMethod[1]\n    }\n  }\n}\n\nmodule.exports = StatsMap\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/stats-map.js",
     "access": "public",
@@ -1445,7 +1445,7 @@
     "lineNumber": 5,
     "interface": false,
     "extends": [
-      "*"
+      "Map"
     ]
   },
   {

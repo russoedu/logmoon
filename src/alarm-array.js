@@ -1,6 +1,6 @@
 /**
  * AlarmArray class
- * @extends Array
+ * @extends {Array}
  */
 class AlarmArray extends Array {
   /**

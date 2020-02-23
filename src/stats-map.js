@@ -1,6 +1,6 @@
 /**
  * Stats Map class
- * @extends Map
+ * @extends {Map}
  */
 class StatsMap extends Map {
   /**
