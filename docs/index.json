@@ -1,0 +1,1211 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/alarm.js",
+    "content": "const Config = require('./config')\nconst config = new Config()\n\nclass Alarm {\n  constructor () {\n    this.requests = 0;\n  }\n\n  addRequest (amount) {\n    this.requests += amount\n  }\n\n  clean () {\n    this.requests = 0\n  }\n\n  monitor (now) {\n    console.log('Alarm:', new Date() - now, 'miliseconds passed', this.requests, 'requests')\n    this.clean()\n\n    setTimeout(() => {\n      this.monitor(now)\n    }, config.alarmCheckInterval)\n  }\n}\n\nmodule.exports = Alarm\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/alarm.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "src/alarm.js",
+    "static": true,
+    "longname": "src/alarm.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon/src/alarm.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/config.js~Config"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "class",
+    "name": "Alarm",
+    "memberof": "src/alarm.js",
+    "static": true,
+    "longname": "src/alarm.js~Alarm",
+    "access": "public",
+    "export": true,
+    "importPath": "logmoon/src/alarm.js",
+    "importStyle": "Alarm",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/alarm.js~Alarm",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/alarm.js~Alarm#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "member",
+    "name": "requests",
+    "memberof": "src/alarm.js~Alarm",
+    "static": false,
+    "longname": "src/alarm.js~Alarm#requests",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "name": "addRequest",
+    "memberof": "src/alarm.js~Alarm",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/alarm.js~Alarm#addRequest",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [
+      {
+        "name": "amount",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "name": "clean",
+    "memberof": "src/alarm.js~Alarm",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/alarm.js~Alarm#clean",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "monitor",
+    "memberof": "src/alarm.js~Alarm",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/alarm.js~Alarm#monitor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "now",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "src/config.js",
+    "content": "const env = require('dotenv').config()\nlet instance = null\n\n/**\n * Singleton configuration class\n */\nclass Config {\n  /**\n   * Configurator constructor\n   * Read all environment variables to configure the application\n   */\n  constructor () {\n    if (instance !== null) {\n      return instance\n    }\n    /**\n     * The interval to display information in miliseconds\n     * @type number\n     * @default 10,000\n     */\n    this.statsDisplayInterval = typeof process.env.STATS_DISPLAY_INTERVAL === 'undefined' ||\n      isNaN(Number(process.env.STATS_DISPLAY_INTERVAL))\n      ? 10 * 1000\n      : Number(process.env.STATS_DISPLAY_INTERVAL) * 1000\n\n    /**\n     * The interval to check the requests per second in miliseconds\n     * @type number\n     * @default 1,000\n     */\n    this.alarmCheckInterval = 1 * 1000\n\n    /**\n     * The amount of requests per second logged that should fire the alert\n     * @type number\n     * @default 10\n     */\n    this.requestsPreSecondAlarm = typeof process.env.REQUESTS_PER_SECOND_ALARM === 'undefined' ||\n      isNaN(Number(process.env.REQUESTS_PER_SECOND_ALARM))\n      ? 10\n      : Number(process.env.REQUESTS_PER_SECOND_ALARM)\n\n    /**\n     * The location of the log file to be streamed\n     * @type string\n     * @default '/tmp/access.log'\n     */\n    this.logFile = typeof process.env.LOG_FILE === 'undefined'\n      ? '/tmp/access.log'\n      : process.env.LOG_FILE\n\n    /**\n     * The configuration for the tail execution. Used to define the char encoding of the log file\n     * @type object\n     */\n    this.tailConfig = typeof process.env.LOG_ENCODING === 'undefined'\n      ? { encoding: 'utf-8' }\n      : { encoding: process.env.LOG_ENCODING }\n\n    instance = this\n    return instance\n  }\n}\n\nmodule.exports = Config\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/config.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "variable",
+    "name": "instance",
+    "memberof": "src/config.js",
+    "static": true,
+    "longname": "src/config.js~instance",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon/src/config.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "class",
+    "name": "Config",
+    "memberof": "src/config.js",
+    "static": true,
+    "longname": "src/config.js~Config",
+    "access": "public",
+    "export": true,
+    "importPath": "logmoon/src/config.js",
+    "importStyle": "Config",
+    "description": "Singleton configuration class",
+    "lineNumber": 7,
+    "interface": false
+  },
+  {
+    "__docId__": 61,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/config.js~Config",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/config.js~Config#constructor",
+    "access": "public",
+    "description": "Configurator constructor\nRead all environment variables to configure the application",
+    "lineNumber": 12
+  },
+  {
+    "__docId__": 62,
+    "kind": "member",
+    "name": "statsDisplayInterval",
+    "memberof": "src/config.js~Config",
+    "static": false,
+    "longname": "src/config.js~Config#statsDisplayInterval",
+    "access": "public",
+    "description": "The interval to display information in miliseconds",
+    "lineNumber": 21,
+    "unknown": [
+      {
+        "tagName": "@default",
+        "tagValue": "10,000"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "member",
+    "name": "alarmCheckInterval",
+    "memberof": "src/config.js~Config",
+    "static": false,
+    "longname": "src/config.js~Config#alarmCheckInterval",
+    "access": "public",
+    "description": "The interval to check the requests per second in miliseconds",
+    "lineNumber": 31,
+    "unknown": [
+      {
+        "tagName": "@default",
+        "tagValue": "1,000"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "name": "requestsPreSecondAlarm",
+    "memberof": "src/config.js~Config",
+    "static": false,
+    "longname": "src/config.js~Config#requestsPreSecondAlarm",
+    "access": "public",
+    "description": "The amount of requests per second logged that should fire the alert",
+    "lineNumber": 38,
+    "unknown": [
+      {
+        "tagName": "@default",
+        "tagValue": "10"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "name": "logFile",
+    "memberof": "src/config.js~Config",
+    "static": false,
+    "longname": "src/config.js~Config#logFile",
+    "access": "public",
+    "description": "The location of the log file to be streamed",
+    "lineNumber": 48,
+    "unknown": [
+      {
+        "tagName": "@default",
+        "tagValue": "'/tmp/access.log'"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "member",
+    "name": "tailConfig",
+    "memberof": "src/config.js~Config",
+    "static": false,
+    "longname": "src/config.js~Config#tailConfig",
+    "access": "public",
+    "description": "The configuration for the tail execution. Used to define the char encoding of the log file",
+    "lineNumber": 56,
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "name": "src/display.js",
+    "content": "class Display {\n\n}\n\nmodule.exports = Display\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/display.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 68,
+    "kind": "class",
+    "name": "Display",
+    "memberof": "src/display.js",
+    "static": true,
+    "longname": "src/display.js~Display",
+    "access": "public",
+    "export": true,
+    "importPath": "logmoon/src/display.js",
+    "importStyle": "Display",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 69,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "#!/usr/bin/env node\n\nconst tail = require('./tail')\nconst Stats = require('./stats')\nconst Alarm = require('./alarm')\n\nconst stats = new Stats()\nconst alarm = new Alarm()\n\nconst now = new Date()\n\ntail.on('line', (data) => {\n  stats.push(data)\n  alarm.addRequest(1)\n})\n\ntail.on('error', (error) => {\n  console.error(error)\n})\n\nstats.monitor(now)\nalarm.monitor(now)\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 70,
+    "kind": "variable",
+    "name": "stats",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~stats",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/stats.js~Stats"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "variable",
+    "name": "alarm",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~alarm",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/alarm.js~Alarm"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "variable",
+    "name": "now",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~now",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "file",
+    "name": "src/stats.js",
+    "content": "const Config = require('./config')\nconst config = new Config()\n\nclass Stats {\n  constructor () {\n    this.logs = []\n  }\n\n  push (data) {\n    this.logs.push(data)\n  }\n\n  clean () {\n    this.logs = []\n  }\n\n  monitor (now) {\n    console.log('Stats:', new Date() - now, 'miliseconds passed', this.logs.length, 'entries')\n    this.clean()\n\n    setTimeout(() => {\n      this.monitor(now)\n    }, config.statsDisplayInterval)\n  }\n}\n\nmodule.exports = Stats\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/stats.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 74,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "src/stats.js",
+    "static": true,
+    "longname": "src/stats.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon/src/stats.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/config.js~Config"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "class",
+    "name": "Stats",
+    "memberof": "src/stats.js",
+    "static": true,
+    "longname": "src/stats.js~Stats",
+    "access": "public",
+    "export": true,
+    "importPath": "logmoon/src/stats.js",
+    "importStyle": "Stats",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 76,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/stats.js~Stats",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stats.js~Stats#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "member",
+    "name": "logs",
+    "memberof": "src/stats.js~Stats",
+    "static": false,
+    "longname": "src/stats.js~Stats#logs",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "method",
+    "name": "push",
+    "memberof": "src/stats.js~Stats",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stats.js~Stats#push",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 79,
+    "kind": "method",
+    "name": "clean",
+    "memberof": "src/stats.js~Stats",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stats.js~Stats#clean",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "name": "monitor",
+    "memberof": "src/stats.js~Stats",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stats.js~Stats#monitor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "now",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 82,
+    "kind": "file",
+    "name": "src/tail.js",
+    "content": "const T = require('tail').Tail\nconst Config = require('./config')\nconst config = new Config()\n\n/**\n * Tail class\n * Read the log stream\n */\nclass Tail {\n  /**\n   * Returns a new Tail caller, responsible for reading the log file in real time\n   */\n  static run () {\n    console.log(config)\n    return new T(config.logFile, config.tailConfig)\n  }\n}\n\nmodule.exports = Tail.run()\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/tail.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "src/tail.js",
+    "static": true,
+    "longname": "src/tail.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon/src/tail.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/config.js~Config"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "class",
+    "name": "Tail",
+    "memberof": "src/tail.js",
+    "static": true,
+    "longname": "src/tail.js~Tail",
+    "access": "public",
+    "export": false,
+    "importPath": "logmoon/src/tail.js",
+    "importStyle": null,
+    "description": "Tail class\nRead the log stream",
+    "lineNumber": 9,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "method",
+    "name": "run",
+    "memberof": "src/tail.js~Tail",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/tail.js~Tail.run",
+    "access": "public",
+    "description": "Returns a new Tail caller, responsible for reading the log file in real time",
+    "lineNumber": 13,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "index",
+    "content": "![LogMoon Logo](https://vectr.com/russoedu/eyLOsitfC.svg?width=256&select=eyLOsitfCpage0)\n\n\n[![Dependencies Status](https://david-dm.org/russoedu/logmoon/status.svg)](https://david-dm.org/russoedu/logmoon)\n[![DevDependencies Status](https://david-dm.org/russoedu/logmoon/dev-status.svg)](https://david-dm.org/russoedu/logmoon?type=dev)\n[![Coverage Status](https://coveralls.io/repos/github/russoedu/logmoon/badge.svg?branch=master)](https://coveralls.io/github/russoedu/logmoon?branch=master)\n[![Build Status](https://travis-ci.org/russoedu/logmoon.svg?branch=master)](https://travis-ci.org/russoedu/logmoon)\n\n# LogMoon\nLogMoon is real time HTTP log monitoring CLI. It will display access stats in a determined frquency and alert you if a chosen access limit is reached in 2 minutes.\n\n## Installation\n\nYou can install LogMoon as a global NPM package by running\n```\nnpm i -g logmoon\n```\n\nLogMoon will be installed and will be available globally in your terminal.\n\n## Configuration\n\nLogMoon has 3 configurations that can be changed via environment variables (instructions: [Windows](https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0) | [Unix](https://www.cyberciti.biz/faq/set-environment-variable-unix/)):\n\n### 1. ```STATS_DISPLAY_INTERVAL``` (seconds)\n\nThe interval to display access information (TODO).\n\n*Default value is 10.* (Access information is displayed every 10 seconds);\n\n### 2. ```REQUESTS_PER_SECOND_ALARM``` (requests per second)\n\nThe number of requestes per second threshold witch will display an alert when reached.\n\n*Default value is 10.* (Alert is displayed if 10 or more requests per second are made in the past 2 minutes).\n\n### 3. ```LOG_FILE``` (location)\n\nThe location of the [W3C-formatted HTTP access log](https://www.w3.org/Daemon/User/Config/Logging.html).\n\n*Default value is /tmp/access.log.* (The location from where the log file will be consumed in real time).\n\n### 3. ```LOG_ENCODING``` (log file character encoding)\n\nThe character encoding of the log file.\n\n*Default value is utf-8.* (The encoding of the log file can be changed in case your system logs with a diferent [character encoding](https://en.wikipedia.org/wiki/Character_encoding#Common_character_encodings)).\n\n## Usage\n\nIn order to use LogMoon, you can execute the following on the terminal:\n\n```\nlogmoon\n```\n\nLogMoon should start running and displaying the information from your server log file.\n\n## Development\n\nTo install locally and be able to contribute, clone this repo and save a copy of ```.env.example``` as ```.env```.\n\nTo execute the application:\n```\nnpm start\n```\n\nTo run the tests:\n```\nnpm test\n```\n\nTo generate the documentation:\n```\nnpm doc\n```\n\n## Future improvements\n\n- [ ] TODO\n- [ ] TODO\n",
+    "longname": "C:\\Users\\russo\\development\\datadog\\logmoon\\README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"logmoon\",\n  \"version\": \"0.0.1\",\n  \"homepage\": \"https://github.com/russoedu/logmoon#readme\",\n  \"license\": \"MIT\",\n  \"description\": \"HTTP log monitoring console program\",\n  \"author\": {\n    \"name\": \"Eduardo Russo\",\n    \"email\": \"russoedu@gmail.com\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/russoedu/logmoon/issues\"\n  },\n  \"main\": \"src/index.js\",\n  \"bin\": {\n    \"logmoon\": \"./src/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node ./src/index.js\",\n    \"test\": \"nyc --reporter=html --reporter=text mocha\",\n    \"coverage\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"doc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/russoedu/logmoon.git\"\n  },\n  \"keywords\": [\n    \"log\",\n    \"monitoring\",\n    \"terminal\",\n    \"alert\"\n  ],\n  \"devDependencies\": {\n    \"chai\": \"^4.2.0\",\n    \"coveralls\": \"^3.0.9\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.5\",\n    \"esdoc-node-plugin\": \"^0.2.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.8.0\",\n    \"eslint-config-standard\": \"^14.1.0\",\n    \"eslint-plugin-chai-friendly\": \"^0.5.0\",\n    \"eslint-plugin-import\": \"^2.20.1\",\n    \"eslint-plugin-node\": \"^11.0.0\",\n    \"eslint-plugin-promise\": \"^4.2.1\",\n    \"eslint-plugin-standard\": \"^4.0.1\",\n    \"mocha\": \"^7.0.1\",\n    \"mocked-env\": \"^1.3.2\",\n    \"nyc\": \"^15.0.0\",\n    \"sinon\": \"^9.0.0\"\n  },\n  \"dependencies\": {\n    \"chalk\": \"^3.0.0\",\n    \"dotenv\": \"^8.2.0\",\n    \"fs-backwards-stream\": \"^1.0.0\",\n    \"node-notifier\": \"^6.0.0\",\n    \"tail\": \"^2.0.3\"\n  }\n}\n",
+    "longname": "C:\\Users\\russo\\development\\datadog\\logmoon\\package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "coverage": "31.03%",
+  "expectCount": 29,
+  "actualCount": 9,
+  "files": {
+    "src/alarm.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        4,
+        5,
+        6,
+        9,
+        13,
+        17
+      ]
+    },
+    "src/config.js": {
+      "expectCount": 8,
+      "actualCount": 7,
+      "undocumentLines": [
+        2
+      ]
+    },
+    "src/display.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/index.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8,
+        10
+      ]
+    },
+    "src/stats.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        4,
+        5,
+        6,
+        9,
+        13,
+        17
+      ]
+    },
+    "src/tail.js": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        3
+      ]
+    }
+  }
+}

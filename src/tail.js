@@ -1,9 +1,19 @@
-const Tail = require('tail').Tail
+const T = require('tail').Tail
 const Config = require('./config')
 const config = new Config()
 
-console.log(config);
 /**
- * Tail caller, responsible for reading the log file in real time
+ * Tail class
+ * Read the log stream
  */
-module.exports = new Tail(config.logFileLocation, config.tailConfig)
+class Tail {
+  /**
+   * Returns a new Tail caller, responsible for reading the log file in real time
+   */
+  static run () {
+    console.log(config)
+    return new T(config.logFile, config.tailConfig)
+  }
+}
+
+module.exports = Tail.run()

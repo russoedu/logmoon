@@ -72,7 +72,7 @@ npm test
 
 To generate the documentation:
 ```
-npm doc
+npm run doc
 ```
 
 ## Future improvements

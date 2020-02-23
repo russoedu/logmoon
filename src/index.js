@@ -1,24 +1,22 @@
 #!/usr/bin/env node
 
 const tail = require('./tail')
-// const Config = require('./config')
-// const config = new Config()
+const Stats = require('./stats')
+const Alarm = require('./alarm')
 
-let dataCol = [];
+const stats = new Stats()
+const alarm = new Alarm()
+
+const now = new Date()
+
 tail.on('line', (data) => {
-  console.log(data)
-  // dataCol.push(data)
+  stats.push(data)
+  alarm.addRequest(1)
 })
 
 tail.on('error', (error) => {
   console.error(error)
 })
 
-function repeat (data = 0) {
-  console.log(data, dataCol.length)
-  dataCol = []
-  setTimeout(() => {
-    repeat(data + 1)
-  }, 1000)
-}
-repeat()
+stats.monitor(now)
+alarm.monitor(now)
