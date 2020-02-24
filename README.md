@@ -7,13 +7,18 @@
 [![Build Status](https://travis-ci.org/russoedu/logmoon.svg?branch=master)](https://travis-ci.org/russoedu/logmoon)
 
 # LogMoon
-LogMoon is real time HTTP log monitoring CLI. It will display access stats in a determined frquency and alert you if a chosen access limit is reached in 2 minutes.
+LogMoon is real-time HTTP log monitoring CLI. It will display access stats in a determined frequency and alert you if a chosen access limit is reached in 2 minutes.
 
 ## Installation
 
 You can install LogMoon as a global NPM package by running
 ```
 npm i -g logmoon
+```
+
+Or by cloning this repository and running 
+```
+npm install
 ```
 
 LogMoon will be installed and will be available globally in your terminal.
@@ -30,7 +35,7 @@ LogMoon has 4 configurations that can be changed via environment variables (inst
 
 ### 2. ```REQUESTS_PER_SECOND_ALARM``` (requests per second)
 
->The number of requestes per second threshold witch will display an alert when reached.
+>The number of requests per second threshold witch will display an alert when reached.
 >
 >*Default value is 10.* (Alert is displayed if 10 or more requests per second are made in the past ```LOGMOON_ALARM_PERIOD``` seconds).
 
@@ -43,7 +48,7 @@ LogMoon has 4 configurations that can be changed via environment variables (inst
 
 >The location of the [W3C-formatted HTTP access log](https://www.w3.org/Daemon/User/Config/Logging.html).
 >
->*Default value is /tmp/access.log.* (The location from where the log file will be consumed in real time).
+>*Default value is /tmp/access.log.* (The location from where the log file will be consumed in real-time).
 
 ### 4. ```LOGMOON_OUTPUT_LOCATION``` (file location)
 
@@ -55,6 +60,12 @@ In order to use LogMoon, you can execute the following on the terminal:
 
 ```
 logmoon
+```
+
+Or, if you cloned the repo, run
+
+```
+npm start
 ```
 
 LogMoon should start running and displaying the information from your server log file.
@@ -80,10 +91,10 @@ npm run doc
 
 ## Future improvements
 
-- [ ] Find a less memory consumming solution for the alarm (maybe based on the average requests instead of an array)
+- [ ] Find a less memory consuming solution for the alarm (maybe based on the average requests instead of an array)
 - [ ] Make the ```REQUESTS_PER_SECOND_ALARM``` variable according to the log frequency
-- [ ] Display an alert in a permanet position in the screen
-- [ ] Create other alerts, for instance for any status 50x or certain amount of status 40x in a period of time
+- [ ] Display an alert in a permanent position in the screen
+- [ ] Create other alerts, for instance for any status 50x or a certain amount of status 40x in a period of time
 - [ ] Handle several logs
 - [ ] Create a browser output
 - [ ] Create an Electron app

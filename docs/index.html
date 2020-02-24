@@ -46,9 +46,11 @@
 <a href="https://david-dm.org/russoedu/logmoon?type=dev"><img src="https://david-dm.org/russoedu/logmoon/dev-status.svg" alt="DevDependencies Status"></a>
 <a href="https://coveralls.io/github/russoedu/logmoon?branch=master"><img src="https://coveralls.io/repos/github/russoedu/logmoon/badge.svg?branch=master" alt="Coverage Status"></a>
 <a href="https://travis-ci.org/russoedu/logmoon"><img src="https://travis-ci.org/russoedu/logmoon.svg?branch=master" alt="Build Status"></a></p>
-<h1 id="logmoon">LogMoon</h1><p>LogMoon is real time HTTP log monitoring CLI. It will display access stats in a determined frquency and alert you if a chosen access limit is reached in 2 minutes.</p>
+<h1 id="logmoon">LogMoon</h1><p>LogMoon is real-time HTTP log monitoring CLI. It will display access stats in a determined frequency and alert you if a chosen access limit is reached in 2 minutes.</p>
 <h2 id="installation">Installation</h2><p>You can install LogMoon as a global NPM package by running</p>
 <pre><code><code class="source-code prettyprint">npm i -g logmoon</code>
+</code></pre><p>Or by cloning this repository and running </p>
+<pre><code><code class="source-code prettyprint">npm install</code>
 </code></pre><p>LogMoon will be installed and will be available globally in your terminal.</p>
 <h2 id="configuration">Configuration</h2><p>LogMoon has 4 configurations that can be changed via environment variables (instructions: <a href="https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0">Windows</a> | <a href="https://www.cyberciti.biz/faq/set-environment-variable-unix/">Unix</a>) or via the creation of a <code>.env</code> file based on the <code>.env.example</code>:</p>
 <h3 id="1---code-stats-display-interval--code---seconds-">1. <code>STATS_DISPLAY_INTERVAL</code> (seconds)</h3><blockquote>
@@ -56,7 +58,7 @@
 <p><em>Default value is 10.</em> (Access information is displayed every 10 seconds);</p>
 </blockquote>
 <h3 id="2---code-requests-per-second-alarm--code---requests-per-second-">2. <code>REQUESTS_PER_SECOND_ALARM</code> (requests per second)</h3><blockquote>
-<p>The number of requestes per second threshold witch will display an alert when reached.</p>
+<p>The number of requests per second threshold witch will display an alert when reached.</p>
 <p><em>Default value is 10.</em> (Alert is displayed if 10 or more requests per second are made in the past <code>LOGMOON_ALARM_PERIOD</code> seconds).</p>
 </blockquote>
 <h3 id="3---code-logmoon-alarm-period--code---seconds-period-">3. <code>LOGMOON_ALARM_PERIOD</code> (seconds period)</h3><blockquote>
@@ -65,13 +67,15 @@
 </blockquote>
 <h3 id="3---code-log-file--code---file-location-">3. <code>LOG_FILE</code> (file location)</h3><blockquote>
 <p>The location of the <a href="https://www.w3.org/Daemon/User/Config/Logging.html">W3C-formatted HTTP access log</a>.</p>
-<p><em>Default value is /tmp/access.log.</em> (The location from where the log file will be consumed in real time).</p>
+<p><em>Default value is /tmp/access.log.</em> (The location from where the log file will be consumed in real-time).</p>
 </blockquote>
 <h3 id="4---code-logmoon-output-location--code---file-location-">4. <code>LOGMOON_OUTPUT_LOCATION</code> (file location)</h3><blockquote>
 <p>The location of the output file. If empty, or not present, LogMoon will not log to file, only to the terminal window</p>
 </blockquote>
 <h2 id="usage">Usage</h2><p>In order to use LogMoon, you can execute the following on the terminal:</p>
 <pre><code><code class="source-code prettyprint">logmoon</code>
+</code></pre><p>Or, if you cloned the repo, run</p>
+<pre><code><code class="source-code prettyprint">npm start</code>
 </code></pre><p>LogMoon should start running and displaying the information from your server log file.</p>
 <h2 id="development">Development</h2><p>To install locally and be able to contribute, clone this repo and save a copy of <code>.env.example</code> as <code>.env</code>.</p>
 <p>To execute the application:</p>
@@ -81,10 +85,10 @@
 </code></pre><p>To generate the documentation:</p>
 <pre><code><code class="source-code prettyprint">npm run doc</code>
 </code></pre><h2 id="future-improvements">Future improvements</h2><ul>
-<li>[ ] Find a less memory consumming solution for the alarm (maybe based on the average requests instead of an array)</li>
+<li>[ ] Find a less memory consuming solution for the alarm (maybe based on the average requests instead of an array)</li>
 <li>[ ] Make the <code>REQUESTS_PER_SECOND_ALARM</code> variable according to the log frequency</li>
-<li>[ ] Display an alert in a permanet position in the screen</li>
-<li>[ ] Create other alerts, for instance for any status 50x or certain amount of status 40x in a period of time</li>
+<li>[ ] Display an alert in a permanent position in the screen</li>
+<li>[ ] Create other alerts, for instance for any status 50x or a certain amount of status 40x in a period of time</li>
 <li>[ ] Handle several logs</li>
 <li>[ ] Create a browser output</li>
 <li>[ ] Create an Electron app</li>

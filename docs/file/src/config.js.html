@@ -115,7 +115,8 @@ class Config {
      * @default false
      */
     this.outputLocation = typeof process.env.LOGMOON_OUTPUT_LOCATION === &apos;undefined&apos; ||
-      process.env.LOGMOON_OUTPUT_LOCATION === &apos;&apos;
+      process.env.LOGMOON_OUTPUT_LOCATION === &apos;&apos; ||
+      process.env.LOGMOON_OUTPUT_LOCATION === &apos;false&apos;
       ? false
       : process.env.LOGMOON_OUTPUT_LOCATION
 
