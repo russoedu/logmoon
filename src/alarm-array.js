@@ -9,7 +9,7 @@ class AlarmArray {
   constructor (maximumSize) {
     /**
      * The array where the requests will be stored
-     * @type {array}
+     * @type {number[]}
      */
     this.queue = []
 

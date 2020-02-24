@@ -1,6 +1,7 @@
 const T = require('tail').Tail
 const Config = require('./config')
 const config = new Config()
+const fs = require('fs')
 
 let tail
 /**
@@ -13,17 +14,13 @@ class Tail {
    * @param {function} error the callback function on error
    */
   static start (success, error) {
+    if (!fs.existsSync(config.logFile)) {
+      return error(`The log file "${config.logFile}" could not be found`)
+    }
     tail = new T(config.logFile)
 
     tail.on('line', (data) => success(data))
     tail.on('error', (e) => error(e))
-  }
-
-  /**
-   * Stop the tail
-   */
-  static stop () {
-    tail.unwatch()
   }
 }
 

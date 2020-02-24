@@ -7,9 +7,16 @@ const stats = new Stats()
 const alarm = new Alarm()
 const output = new Output()
 
+/**
+ * Main monitoring class
+ */
 class Monitor {
+  /**
+   * Execute the log tail and monitor stats and requests alarm
+   */
   static run () {
-    output.start()
+    // Only start the monitor if the tail can start
+    let monitor = true
 
     Tail.start(
       data => {
@@ -17,12 +24,15 @@ class Monitor {
         alarm.addRequest()
       },
       error => {
-        console.error(error)
+        monitor = false
+        output.error(error)
       }
     )
-
-    stats.monitor()
-    alarm.monitor()
+    if (monitor) {
+      output.start()
+      stats.monitor()
+      alarm.monitor()
+    }
   }
 }
 

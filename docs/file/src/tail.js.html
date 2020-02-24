@@ -45,6 +45,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const T = require(&apos;tail&apos;).Tail
 const Config = require(&apos;./config&apos;)
 const config = new Config()
+const fs = require(&apos;fs&apos;)
 
 let tail
 /**
@@ -57,17 +58,13 @@ class Tail {
    * @param {function} error the callback function on error
    */
   static start (success, error) {
+    if (!fs.existsSync(config.logFile)) {
+      return error(`The log file &quot;${config.logFile}&quot; could not be found`)
+    }
     tail = new T(config.logFile)
 
     tail.on(&apos;line&apos;, (data) =&gt; success(data))
     tail.on(&apos;error&apos;, (e) =&gt; error(e))
-  }
-
-  /**
-   * Stop the tail
-   */
-  static stop () {
-    tail.unwatch()
   }
 }
 

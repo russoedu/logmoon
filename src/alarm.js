@@ -19,11 +19,6 @@ class Alarm {
     this.requestsQueue = new AlarmArray(config.alarmPeriod)
 
     /**
-     * @type {boolean} Variable to stop the execution when needed
-     */
-    this.run = true
-
-    /**
      * Variable to check if the alert has already been displayed
      * @type {boolean}
      */

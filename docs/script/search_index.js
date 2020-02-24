@@ -414,12 +414,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/alarm.js~alarm#run",
-    "class/src/alarm.js~Alarm.html#instance-member-run",
-    "src/alarm.js~Alarm#run",
-    "member"
-  ],
-  [
     "src/config.js",
     "file/src/config.js.html",
     "src/config.js",
@@ -501,6 +495,12 @@ window.esdocSearchIndex = [
     "src/output.js~output#constructor",
     "class/src/output.js~Output.html#instance-constructor-constructor",
     "src/output.js~Output#constructor",
+    "method"
+  ],
+  [
+    "src/output.js~output#error",
+    "class/src/output.js~Output.html#instance-method-error",
+    "src/output.js~Output#error",
     "method"
   ],
   [
@@ -633,12 +633,6 @@ window.esdocSearchIndex = [
     "src/tail.js~tail.start",
     "class/src/tail.js~Tail.html#static-method-start",
     "src/tail.js~Tail.start",
-    "method"
-  ],
-  [
-    "src/tail.js~tail.stop",
-    "class/src/tail.js~Tail.html#static-method-stop",
-    "src/tail.js~Tail.stop",
     "method"
   ]
 ]

@@ -1,6 +1,6 @@
 {
-  "coverage": "78.68%",
-  "expectCount": 61,
+  "coverage": "80%",
+  "expectCount": 60,
   "actualCount": 48,
   "files": {
     "src/alarm-array.js": {
@@ -9,8 +9,8 @@
       "undocumentLines": []
     },
     "src/alarm.js": {
-      "expectCount": 9,
-      "actualCount": 7,
+      "expectCount": 8,
+      "actualCount": 6,
       "undocumentLines": [
         5,
         6
@@ -25,18 +25,16 @@
     },
     "src/monitor.js": {
       "expectCount": 5,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
         6,
         7,
-        8,
-        10,
-        11
+        8
       ]
     },
     "src/output.js": {
-      "expectCount": 9,
-      "actualCount": 7,
+      "expectCount": 10,
+      "actualCount": 8,
       "undocumentLines": [
         6,
         13
@@ -49,15 +47,16 @@
     },
     "src/stats.js": {
       "expectCount": 14,
-      "actualCount": 12,
+      "actualCount": 11,
       "undocumentLines": [
         5,
-        6
+        6,
+        112
       ]
     },
     "src/tail.js": {
-      "expectCount": 4,
-      "actualCount": 3,
+      "expectCount": 3,
+      "actualCount": 2,
       "undocumentLines": [
         3
       ]

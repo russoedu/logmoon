@@ -19,7 +19,7 @@ class Output {
 
     /**
      * The array to store the text to be logged or saved to file
-     * @type {array}
+     * @type {string[]}
      */
     this.messages = []
   }
@@ -48,6 +48,35 @@ class Output {
       })
     this.messages.forEach(message => {
       console.log(chalk.bgBlue.white.bold(message))
+      if (this.outputFs !== false) {
+        fs.writeSync(this.outputFs, `${message}\n`)
+      }
+    })
+  }
+
+  /**
+   * Initial output message
+   */
+  error (errorMessage) {
+    const spacingBefore = Math.floor((process.stdout.columns - errorMessage.length) / 2) - 1
+    const spacingAfter = process.stdout.columns - (errorMessage.length + spacingBefore + 2)
+
+    this.messages = [
+      `+${'-'.repeat(process.stdout.columns - 2)}+`,
+      `|${' '.repeat(spacingBefore)}${errorMessage}${' '.repeat(spacingAfter)}|`,
+      `+${'-'.repeat(process.stdout.columns - 2)}+`,
+      ''
+    ]
+    notifier.notify(
+      {
+        title: 'ERROR!',
+        message: errorMessage,
+        icon: path.join(__dirname, 'LogMoon.png'), // Absolute path (doesn't work on balloons)
+        sound: false, // Only Notification Center or Windows Toasters
+        wait: false // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
+      })
+    this.messages.forEach(message => {
+      console.error(chalk.bgRed.white.bold(message))
       if (this.outputFs !== false) {
         fs.writeSync(this.outputFs, `${message}\n`)
       }
@@ -124,6 +153,7 @@ class Output {
   /**
    * Convert bytes into KB, MB, GB or TB, depending on the amount of bytes
    * @param {number} bytes the bytes to be converted
+   * @returns {string} bytes converted into KB, MB, GB or TB
    */
   static convertBytes (bytes) {
     if (bytes === 0) return '0 Bytes'

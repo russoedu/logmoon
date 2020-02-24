@@ -14,6 +14,7 @@ class StatsMap extends Map {
 
   /**
    * Retrive the item that has more occurences and the amount of occurrences
+   * @returns {Object} Object with value and amount
    */
   top () {
     let topMethod = [null, 0]
