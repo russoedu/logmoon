@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/alarm.js | LogMoon</title>
+  <title data-ice="title">Monitor | LogMoon</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -41,74 +41,136 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/alarm.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const chalk = require(&apos;chalk&apos;)
-const Config = require(&apos;./config&apos;)
-const AlarmArray = require(&apos;./alarm-array&apos;)
-const Output = require(&apos;./output&apos;)
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Monitor from &apos;<span><a href="file/src/monitor.js.html#lineNumber10">logmoon/src/monitor.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/src/monitor.js.html#lineNumber10">source</a></span></span>
+</div>
 
-const config = new Config()
-const output = new Output()
-/**
- * Alarm class, control the number of requests per second
- */
-class Alarm {
-  /**
-   * Constructor function
-   */
-  constructor () {
-    /**
-     * The queue to check the threshould
-     * @type {AlarmArray}
-     */
-    this.requestsQueue = new AlarmArray(config.alarmPeriod)
+<div class="self-detail detail">
+  <h1 data-ice="name">Monitor</h1>
 
-    /**
-     * @type {boolean} Variable to stop the execution when needed
-     */
-    this.run = true
+  
 
-    /**
-     * Variable to check if the alert has already been displayed
-     * @type {boolean}
-     */
-    this.alertDisplayed = false
-  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  /**
-   * Add a new request to the total requests amount
-   */
-  addRequest () {
-    this.requestsQueue.addRequest()
-  }
+  
+  
+  
+  
 
-  /**
-   * Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds
-   * @param {boolean} [runOnce=false] Used for test purpose, only
-   */
-  monitor (runOnce = false) {
-    this.requestsQueue.updateQueue()
-    const now = new Date()
-    if (!this.alertDisplayed &amp;&amp; this.requestsQueue.requestsOnPeriod / config.alarmPeriod &gt; config.requestsPreSecondAlarm) {
-      const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`
-      output.alarm(message, true)
-      this.alertDisplayed = true
-    } else if (this.alertDisplayed &amp;&amp; this.requestsQueue.requestsOnPeriod / config.alarmPeriod &lt;= config.requestsPreSecondAlarm) {
-      const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`
-      output.alarm(message, false)
-      this.alertDisplayed = false
-    }
+  
 
-    setTimeout(() =&gt; {
-      if (!runOnce) {
-        this.monitor()
-      }
-    }, config.alarmCheckInterval)
-  }
-}
+  
 
-module.exports = Alarm
-</code></pre>
+  
+
+  
+</div>
+
+
+<div data-ice="staticMethodSummary"><h2>Static Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/monitor.js~Monitor.html#static-method-run">run</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+<div data-ice="staticMethodDetails"><h2 data-ice="title">Static Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-run">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    
+    <span class="code" data-ice="name">run</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/monitor.js.html#lineNumber11">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+
+
 
 </div>
 

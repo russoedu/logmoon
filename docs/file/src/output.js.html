@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/monitor.js~Monitor.html">Monitor</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
@@ -44,7 +45,8 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const chalk = require(&apos;chalk&apos;)
 const fs = require(&apos;fs&apos;)
 const Config = require(&apos;./config&apos;)
-
+const notifier = require(&apos;node-notifier&apos;)
+const path = require(&apos;path&apos;);
 const config = new Config()
 
 /**
@@ -74,14 +76,20 @@ class Output {
     const spacingBefore = Math.floor((process.stdout.columns - startMessage.length) / 2) - 1
     const spacingAfter = process.stdout.columns - (startMessage.length + spacingBefore + 2)
 
-    console.log(spacingBefore, spacingAfter)
-
     this.messages = [
       `+${&apos;-&apos;.repeat(process.stdout.columns - 2)}+`,
       `|${&apos; &apos;.repeat(spacingBefore)}${startMessage}${&apos; &apos;.repeat(spacingAfter)}|`,
       `+${&apos;-&apos;.repeat(process.stdout.columns - 2)}+`,
       &apos;&apos;
     ]
+    notifier.notify(
+      {
+        title: &apos;LogMoon&apos;,
+        message: startMessage,
+        icon: path.join(__dirname, &apos;LogMoon.png&apos;), // Absolute path (doesn&apos;t work on balloons)
+        sound: false, // Only Notification Center or Windows Toasters
+        wait: false // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
+      })
     this.messages.forEach(message =&gt; {
       console.log(chalk.bgBlue.white.bold(message))
       if (this.outputFs !== false) {
@@ -148,6 +156,13 @@ class Output {
         fs.writeSync(this.outputFs, `${message}\n`)
       }
     })
+    notifier.notify(
+      {
+        title: alertOn ? &apos;ALERT!&apos; : &apos;LogMoon&apos;,
+        message: text,
+        icon: path.join(__dirname, &apos;LogMoon.png&apos;), // Absolute path (doesn&apos;t work on balloons)
+        sound: alertOn // Only Notification Center or Windows Toasters
+      })
   }
 
   /**

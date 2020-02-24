@@ -1,7 +1,8 @@
 const chalk = require('chalk')
 const fs = require('fs')
 const Config = require('./config')
-
+const notifier = require('node-notifier')
+const path = require('path');
 const config = new Config()
 
 /**
@@ -37,6 +38,14 @@ class Output {
       `+${'-'.repeat(process.stdout.columns - 2)}+`,
       ''
     ]
+    notifier.notify(
+      {
+        title: 'LogMoon',
+        message: startMessage,
+        icon: path.join(__dirname, 'LogMoon.png'), // Absolute path (doesn't work on balloons)
+        sound: false, // Only Notification Center or Windows Toasters
+        wait: false // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
+      })
     this.messages.forEach(message => {
       console.log(chalk.bgBlue.white.bold(message))
       if (this.outputFs !== false) {
@@ -103,6 +112,13 @@ class Output {
         fs.writeSync(this.outputFs, `${message}\n`)
       }
     })
+    notifier.notify(
+      {
+        title: alertOn ? 'ALERT!' : 'LogMoon',
+        message: text,
+        icon: path.join(__dirname, 'LogMoon.png'), // Absolute path (doesn't work on balloons)
+        sound: alertOn // Only Notification Center or Windows Toasters
+      })
   }
 
   /**

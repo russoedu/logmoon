@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm-array.js~AlarmArray.html">AlarmArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarm.js~Alarm.html">Alarm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/config.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/monitor.js~Monitor.html">Monitor</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/output.js~Output.html">Output</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats-map.js~StatsMap.html">StatsMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stats.js~Stats.html">Stats</a></span></span></li>
@@ -45,6 +46,7 @@
 const Config = require(&apos;./config&apos;)
 const config = new Config()
 
+let tail
 /**
  * Tail class, reads the log stream
  */
@@ -55,10 +57,17 @@ class Tail {
    * @param {function} error the callback function on error
    */
   static start (success, error) {
-    const tail = new T(config.logFile)
+    tail = new T(config.logFile)
 
     tail.on(&apos;line&apos;, (data) =&gt; success(data))
     tail.on(&apos;error&apos;, (e) =&gt; error(e))
+  }
+
+  /**
+   * Stop the tail
+   */
+  static stop () {
+    tail.unwatch()
   }
 }
 

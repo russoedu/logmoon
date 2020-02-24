@@ -10,7 +10,7 @@ describe('Config', () => {
     it('should use the default values if no environment vars found', () => {
       const restore = mockedEnv({ clear: true })
 
-      config = new Config()
+      config = new Config(true)
       expect(config).to.be.an('object')
       expect(config.statsDisplayInterval).to.equal(10 * 1000)
       expect(config.requestsPreSecondAlarm).to.equal(10)
@@ -51,7 +51,7 @@ describe('Config', () => {
       restore()
     })
 
-    it('should use the def environment vars found', () => {
+    it('should use the defined environment vars found', () => {
       const restore = mockedEnv(
         {
           LOGMOON_STATS_DISPLAY_INTERVAL: '123',

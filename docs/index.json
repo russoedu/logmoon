@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/alarm-array.js",
-    "content": "/**\n * AlarmArray class\n * @extends {Array}\n */\nclass AlarmArray extends Array {\n  /**\n   * Creates a new instance\n   * @param {number} maximumSize the maximum size of the array - relates to the Alarm monitoring time\n   */\n  constructor (maximumSize) {\n    super()\n    /**\n     * The total number of requests stored since the last update\n     * @type {number}\n     */\n    this.requests = 0\n\n    /**\n     * The maximum size of the array\n     * @type {number}\n     */\n    this.maximumSize = maximumSize\n\n    /**\n     * The total requests on the alarm monitoring period\n     * @type {number}\n     */\n    this.requestsOnPeriod = 0\n  }\n\n  /**\n   * Add a request\n   */\n  addRequest () {\n    this.requests += 1\n  }\n\n  /**\n   * Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`\n   */\n  updateQueue () {\n    this.push(this.requests)\n    this.requestsOnPeriod += this.requests\n    if (this.length > this.maximumSize) {\n      this.requestsOnPeriod -= this.shift()\n    }\n    this.requests = 0\n  }\n}\n\nmodule.exports = AlarmArray\n",
+    "content": "/**\n * AlarmArray class\n */\nclass AlarmArray {\n  /**\n   * Creates a new instance\n   * @param {number} maximumSize the maximum size of the array - relates to the Alarm monitoring time\n   */\n  constructor (maximumSize) {\n    /**\n     * The array where the requests will be stored\n     * @type {array}\n     */\n    this.queue = []\n\n    /**\n     * The total number of requests stored since the last update\n     * @type {number}\n     */\n    this.requests = 0\n\n    /**\n     * The maximum size of the array\n     * @type {number}\n     */\n    this.maximumSize = maximumSize\n\n    /**\n     * The total requests on the alarm monitoring period\n     * @type {number}\n     */\n    this.requestsOnPeriod = 0\n  }\n\n  /**\n   * Add a request\n   */\n  addRequest () {\n    this.requests += 1\n  }\n\n  /**\n   * Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`\n   */\n  updateQueue () {\n    this.queue.push(this.requests)\n    this.requestsOnPeriod += this.requests\n    if (this.queue.length > this.maximumSize) {\n      this.requestsOnPeriod -= this.queue.shift()\n    }\n    this.requests = 0\n  }\n}\n\nmodule.exports = AlarmArray\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/alarm-array.js",
     "access": "public",
@@ -586,11 +586,8 @@
     "importPath": "logmoon/src/alarm-array.js",
     "importStyle": "AlarmArray",
     "description": "AlarmArray class",
-    "lineNumber": 5,
-    "interface": false,
-    "extends": [
-      "Array"
-    ]
+    "lineNumber": 4,
+    "interface": false
   },
   {
     "__docId__": 50,
@@ -603,7 +600,7 @@
     "longname": "src/alarm-array.js~AlarmArray#constructor",
     "access": "public",
     "description": "Creates a new instance",
-    "lineNumber": 10,
+    "lineNumber": 9,
     "params": [
       {
         "nullable": null,
@@ -620,17 +617,17 @@
   {
     "__docId__": 51,
     "kind": "member",
-    "name": "requests",
+    "name": "queue",
     "memberof": "src/alarm-array.js~AlarmArray",
     "static": false,
-    "longname": "src/alarm-array.js~AlarmArray#requests",
+    "longname": "src/alarm-array.js~AlarmArray#queue",
     "access": "public",
-    "description": "The total number of requests stored since the last update",
-    "lineNumber": 16,
+    "description": "The array where the requests will be stored",
+    "lineNumber": 14,
     "type": {
       "nullable": null,
       "types": [
-        "number"
+        "array"
       ],
       "spread": false,
       "description": null
@@ -639,13 +636,13 @@
   {
     "__docId__": 52,
     "kind": "member",
-    "name": "maximumSize",
+    "name": "requests",
     "memberof": "src/alarm-array.js~AlarmArray",
     "static": false,
-    "longname": "src/alarm-array.js~AlarmArray#maximumSize",
+    "longname": "src/alarm-array.js~AlarmArray#requests",
     "access": "public",
-    "description": "The maximum size of the array",
-    "lineNumber": 22,
+    "description": "The total number of requests stored since the last update",
+    "lineNumber": 20,
     "type": {
       "nullable": null,
       "types": [
@@ -658,13 +655,13 @@
   {
     "__docId__": 53,
     "kind": "member",
-    "name": "requestsOnPeriod",
+    "name": "maximumSize",
     "memberof": "src/alarm-array.js~AlarmArray",
     "static": false,
-    "longname": "src/alarm-array.js~AlarmArray#requestsOnPeriod",
+    "longname": "src/alarm-array.js~AlarmArray#maximumSize",
     "access": "public",
-    "description": "The total requests on the alarm monitoring period",
-    "lineNumber": 28,
+    "description": "The maximum size of the array",
+    "lineNumber": 26,
     "type": {
       "nullable": null,
       "types": [
@@ -676,6 +673,25 @@
   },
   {
     "__docId__": 54,
+    "kind": "member",
+    "name": "requestsOnPeriod",
+    "memberof": "src/alarm-array.js~AlarmArray",
+    "static": false,
+    "longname": "src/alarm-array.js~AlarmArray#requestsOnPeriod",
+    "access": "public",
+    "description": "The total requests on the alarm monitoring period",
+    "lineNumber": 32,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 55,
     "kind": "method",
     "name": "addRequest",
     "memberof": "src/alarm-array.js~AlarmArray",
@@ -685,12 +701,12 @@
     "longname": "src/alarm-array.js~AlarmArray#addRequest",
     "access": "public",
     "description": "Add a request",
-    "lineNumber": 34,
+    "lineNumber": 38,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 56,
+    "__docId__": 57,
     "kind": "method",
     "name": "updateQueue",
     "memberof": "src/alarm-array.js~AlarmArray",
@@ -700,15 +716,15 @@
     "longname": "src/alarm-array.js~AlarmArray#updateQueue",
     "access": "public",
     "description": "Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`",
-    "lineNumber": 41,
+    "lineNumber": 45,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 60,
+    "__docId__": 61,
     "kind": "file",
     "name": "src/alarm.js",
-    "content": "const chalk = require('chalk')\nconst Config = require('./config')\nconst AlarmArray = require('./alarm-array')\nconst Output = require('./output')\n\nconst config = new Config()\nconst output = new Output()\n/**\n * Alarm class, control the number of requests per second\n */\nclass Alarm {\n  /**\n   * Constructor function\n   */\n  constructor () {\n    /**\n     * The queue to check the threshould\n     * @type {AlarmArray}\n     */\n    this.requestsQueue = new AlarmArray(config.alarmPeriod)\n\n    /**\n     * Variable to check if the alert has already been displayed\n     * @type {boolean}\n     */\n    this.alertDisplayed = false\n  }\n\n  /**\n   * Add a new request to the total requests amount\n   */\n  addRequest () {\n    this.requestsQueue.addRequest()\n  }\n\n  /**\n   * Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds\n   */\n  monitor () {\n    this.requestsQueue.updateQueue()\n    const now = new Date()\n    if (!this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod > config.requestsPreSecondAlarm) {\n      const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`\n      output.alarm(message, now, true)\n      this.alertDisplayed = true\n    } else if (this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod <= config.requestsPreSecondAlarm) {\n      const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`\n      output.alarm(message, now, true)\n      this.alertDisplayed = false\n    }\n\n    setTimeout(() => {\n      this.monitor()\n    }, config.alarmCheckInterval)\n  }\n}\n\nmodule.exports = Alarm\n",
+    "content": "const chalk = require('chalk')\nconst Config = require('./config')\nconst AlarmArray = require('./alarm-array')\nconst Output = require('./output')\n\nconst config = new Config()\nconst output = new Output()\n/**\n * Alarm class, control the number of requests per second\n */\nclass Alarm {\n  /**\n   * Constructor function\n   */\n  constructor () {\n    /**\n     * The queue to check the threshould\n     * @type {AlarmArray}\n     */\n    this.requestsQueue = new AlarmArray(config.alarmPeriod)\n\n    /**\n     * @type {boolean} Variable to stop the execution when needed\n     */\n    this.run = true\n\n    /**\n     * Variable to check if the alert has already been displayed\n     * @type {boolean}\n     */\n    this.alertDisplayed = false\n  }\n\n  /**\n   * Add a new request to the total requests amount\n   */\n  addRequest () {\n    this.requestsQueue.addRequest()\n  }\n\n  /**\n   * Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds\n   * @param {boolean} [runOnce=false] Used for test purpose, only\n   */\n  monitor (runOnce = false) {\n    this.requestsQueue.updateQueue()\n    const now = new Date()\n    if (!this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod > config.requestsPreSecondAlarm) {\n      const message = `****** ALERT! High traffic generated an alert hits = ${this.requestsQueue.requestsOnPeriod}, triggered at ${now} ******`\n      output.alarm(message, true)\n      this.alertDisplayed = true\n    } else if (this.alertDisplayed && this.requestsQueue.requestsOnPeriod / config.alarmPeriod <= config.requestsPreSecondAlarm) {\n      const message = `****** ALERT RECOVERED! Trafic normalized at ${now} ******`\n      output.alarm(message, false)\n      this.alertDisplayed = false\n    }\n\n    setTimeout(() => {\n      if (!runOnce) {\n        this.monitor()\n      }\n    }, config.alarmCheckInterval)\n  }\n}\n\nmodule.exports = Alarm\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/alarm.js",
     "access": "public",
@@ -716,7 +732,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 61,
+    "__docId__": 62,
     "kind": "variable",
     "name": "config",
     "memberof": "src/alarm.js",
@@ -737,7 +753,7 @@
     "ignore": true
   },
   {
-    "__docId__": 62,
+    "__docId__": 63,
     "kind": "variable",
     "name": "output",
     "memberof": "src/alarm.js",
@@ -758,7 +774,7 @@
     "ignore": true
   },
   {
-    "__docId__": 63,
+    "__docId__": 64,
     "kind": "class",
     "name": "Alarm",
     "memberof": "src/alarm.js",
@@ -773,7 +789,7 @@
     "interface": false
   },
   {
-    "__docId__": 64,
+    "__docId__": 65,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/alarm.js~Alarm",
@@ -786,7 +802,7 @@
     "lineNumber": 15
   },
   {
-    "__docId__": 65,
+    "__docId__": 66,
     "kind": "member",
     "name": "requestsQueue",
     "memberof": "src/alarm.js~Alarm",
@@ -805,15 +821,15 @@
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
     "kind": "member",
-    "name": "alertDisplayed",
+    "name": "run",
     "memberof": "src/alarm.js~Alarm",
     "static": false,
-    "longname": "src/alarm.js~Alarm#alertDisplayed",
+    "longname": "src/alarm.js~Alarm#run",
     "access": "public",
-    "description": "Variable to check if the alert has already been displayed",
-    "lineNumber": 26,
+    "description": "",
+    "lineNumber": 25,
     "type": {
       "nullable": null,
       "types": [
@@ -824,7 +840,26 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 68,
+    "kind": "member",
+    "name": "alertDisplayed",
+    "memberof": "src/alarm.js~Alarm",
+    "static": false,
+    "longname": "src/alarm.js~Alarm#alertDisplayed",
+    "access": "public",
+    "description": "Variable to check if the alert has already been displayed",
+    "lineNumber": 31,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 69,
     "kind": "method",
     "name": "addRequest",
     "memberof": "src/alarm.js~Alarm",
@@ -834,12 +869,12 @@
     "longname": "src/alarm.js~Alarm#addRequest",
     "access": "public",
     "description": "Add a new request to the total requests amount",
-    "lineNumber": 32,
+    "lineNumber": 37,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 68,
+    "__docId__": 70,
     "kind": "method",
     "name": "monitor",
     "memberof": "src/alarm.js~Alarm",
@@ -849,12 +884,25 @@
     "longname": "src/alarm.js~Alarm#monitor",
     "access": "public",
     "description": "Start the log monitoring alarm. The function calls itself every `config.alarmCheckInterval` miliseconds",
-    "lineNumber": 39,
-    "params": [],
+    "lineNumber": 45,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "runOnce",
+        "description": "Used for test purpose, only"
+      }
+    ],
     "return": null
   },
   {
-    "__docId__": 71,
+    "__docId__": 73,
     "kind": "file",
     "name": "src/config.js",
     "content": "const env = require('dotenv').config()\nlet instance = null\n\n/**\n * Singleton configuration class\n */\nclass Config {\n  /**\n   * Singleton configurator constructor\n   * Read all environment variables to configure the application\n   * @param {boolean} [reset=false] Reset the instance singleton and set the configuration again. Used for unit test purpose, only.\n   */\n  constructor (reset = false) {\n    // Singleton reset\n    if (reset === true) {\n      instance = null\n    }\n\n    if (instance !== null) {\n      return instance\n    }\n    /**\n     * The interval to display information in miliseconds\n     * @type {number}\n     * @default 10,000\n     */\n    this.statsDisplayInterval = typeof process.env.LOGMOON_STATS_DISPLAY_INTERVAL === 'undefined' ||\n      isNaN(Number(process.env.LOGMOON_STATS_DISPLAY_INTERVAL))\n      ? 10 * 1000\n      : Number(process.env.LOGMOON_STATS_DISPLAY_INTERVAL) * 1000\n\n    /**\n     * The interval to check the alarm in miliseconds\n     * @type {number}\n     * @default 1,000\n     */\n    this.alarmCheckInterval = 1 * 1000\n\n    /**\n     * The alarm interval in seconds\n     * @type {number}\n     * @default 120\n     */\n    this.alarmPeriod = typeof process.env.LOGMOON_ALARM_PERIOD === 'undefined' ||\n      isNaN(Number(process.env.LOGMOON_ALARM_PERIOD))\n      ? 120\n      : Number(process.env.LOGMOON_ALARM_PERIOD)\n\n    /**\n     * The amount of requests per second that should fire the alert\n     * @type {number}\n     * @default 10\n     */\n    this.requestsPreSecondAlarm = typeof process.env.LOGMOON_REQUESTS_PER_SECOND_ALARM === 'undefined' ||\n      isNaN(Number(process.env.LOGMOON_REQUESTS_PER_SECOND_ALARM))\n      ? 10\n      : Number(process.env.LOGMOON_REQUESTS_PER_SECOND_ALARM)\n\n    /**\n     * The location of the log file to be streamed\n     * @type {string}\n     * @default '/tmp/access.log'\n     */\n    this.logFile = typeof process.env.LOGMOON_LOG_FILE === 'undefined'\n      ? '/tmp/access.log'\n      : process.env.LOGMOON_LOG_FILE\n\n    /**\n     * Location of the output file. If empty, or not present, LogMoon will not log to file\n     * @type {string|boolean}\n     * @default false\n     */\n    this.outputLocation = typeof process.env.LOGMOON_OUTPUT_LOCATION === 'undefined' ||\n      process.env.LOGMOON_OUTPUT_LOCATION === ''\n      ? false\n      : process.env.LOGMOON_OUTPUT_LOCATION\n\n    instance = this\n    return instance\n  }\n}\n\nmodule.exports = Config\n",
@@ -865,7 +913,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 72,
+    "__docId__": 74,
     "kind": "variable",
     "name": "instance",
     "memberof": "src/config.js",
@@ -886,7 +934,7 @@
     "ignore": true
   },
   {
-    "__docId__": 73,
+    "__docId__": 75,
     "kind": "class",
     "name": "Config",
     "memberof": "src/config.js",
@@ -901,7 +949,7 @@
     "interface": false
   },
   {
-    "__docId__": 74,
+    "__docId__": 76,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/config.js~Config",
@@ -928,7 +976,7 @@
     ]
   },
   {
-    "__docId__": 75,
+    "__docId__": 77,
     "kind": "member",
     "name": "statsDisplayInterval",
     "memberof": "src/config.js~Config",
@@ -953,7 +1001,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 78,
     "kind": "member",
     "name": "alarmCheckInterval",
     "memberof": "src/config.js~Config",
@@ -978,7 +1026,7 @@
     }
   },
   {
-    "__docId__": 77,
+    "__docId__": 79,
     "kind": "member",
     "name": "alarmPeriod",
     "memberof": "src/config.js~Config",
@@ -1003,7 +1051,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 80,
     "kind": "member",
     "name": "requestsPreSecondAlarm",
     "memberof": "src/config.js~Config",
@@ -1028,7 +1076,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 81,
     "kind": "member",
     "name": "logFile",
     "memberof": "src/config.js~Config",
@@ -1053,7 +1101,7 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 82,
     "kind": "member",
     "name": "outputLocation",
     "memberof": "src/config.js~Config",
@@ -1079,10 +1127,10 @@
     }
   },
   {
-    "__docId__": 81,
+    "__docId__": 83,
     "kind": "file",
     "name": "src/index.js",
-    "content": "#!/usr/bin/env node\n\nconst Tail = require('./tail')\nconst Output = require('./output')\nconst Stats = require('./stats')\nconst Alarm = require('./alarm')\n\nconst stats = new Stats()\nconst alarm = new Alarm()\nconst output = new Output()\n\noutput.start()\n\nTail.start(\n  data => {\n    stats.push(data)\n    alarm.addRequest()\n  },\n  error => {\n    console.error(error)\n  }\n)\n\nstats.monitor()\nalarm.monitor()\n",
+    "content": "#!/usr/bin/env node\n\nconst Monitor = require('./monitor.js')\nMonitor.run()\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/index.js",
     "access": "public",
@@ -1090,18 +1138,29 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 82,
+    "__docId__": 84,
+    "kind": "file",
+    "name": "src/monitor.js",
+    "content": "const Tail = require('./tail')\nconst Output = require('./output')\nconst Stats = require('./stats')\nconst Alarm = require('./alarm')\n\nconst stats = new Stats()\nconst alarm = new Alarm()\nconst output = new Output()\n\nclass Monitor {\n  static run () {\n    output.start()\n\n    Tail.start(\n      data => {\n        stats.push(data)\n        alarm.addRequest()\n      },\n      error => {\n        console.error(error)\n      }\n    )\n\n    stats.monitor()\n    alarm.monitor()\n  }\n}\n\nmodule.exports = Monitor\n",
+    "static": true,
+    "longname": "C:/Users/russo/development/datadog/logmoon/src/monitor.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 85,
     "kind": "variable",
     "name": "stats",
-    "memberof": "src/index.js",
+    "memberof": "src/monitor.js",
     "static": true,
-    "longname": "src/index.js~stats",
+    "longname": "src/monitor.js~stats",
     "access": "public",
     "export": false,
-    "importPath": "logmoon",
+    "importPath": "logmoon/src/monitor.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 6,
     "undocument": true,
     "type": {
       "types": [
@@ -1111,18 +1170,18 @@
     "ignore": true
   },
   {
-    "__docId__": 83,
+    "__docId__": 86,
     "kind": "variable",
     "name": "alarm",
-    "memberof": "src/index.js",
+    "memberof": "src/monitor.js",
     "static": true,
-    "longname": "src/index.js~alarm",
+    "longname": "src/monitor.js~alarm",
     "access": "public",
     "export": false,
-    "importPath": "logmoon",
+    "importPath": "logmoon/src/monitor.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 7,
     "undocument": true,
     "type": {
       "types": [
@@ -1132,18 +1191,18 @@
     "ignore": true
   },
   {
-    "__docId__": 84,
+    "__docId__": 87,
     "kind": "variable",
     "name": "output",
-    "memberof": "src/index.js",
+    "memberof": "src/monitor.js",
     "static": true,
-    "longname": "src/index.js~output",
+    "longname": "src/monitor.js~output",
     "access": "public",
     "export": false,
-    "importPath": "logmoon",
+    "importPath": "logmoon/src/monitor.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 8,
     "undocument": true,
     "type": {
       "types": [
@@ -1153,10 +1212,42 @@
     "ignore": true
   },
   {
-    "__docId__": 85,
+    "__docId__": 88,
+    "kind": "class",
+    "name": "Monitor",
+    "memberof": "src/monitor.js",
+    "static": true,
+    "longname": "src/monitor.js~Monitor",
+    "access": "public",
+    "export": true,
+    "importPath": "logmoon/src/monitor.js",
+    "importStyle": "Monitor",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "run",
+    "memberof": "src/monitor.js~Monitor",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/monitor.js~Monitor.run",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 90,
     "kind": "file",
     "name": "src/output.js",
-    "content": "const chalk = require('chalk')\nconst fs = require('fs')\nconst Config = require('./config')\n\nconst config = new Config()\n\n/**\n * Output class\n * Output data to the terminal and to the optional result file\n */\nclass Output {\n  constructor () {\n    /**\n     * The output openSync with the output file location data OR false if outputLocation is not set or set as 'false'\n     * @type {number|boolean}\n     */\n    this.outputFs = config.outputLocation === 'false' ? false : fs.openSync(config.outputLocation, 'a')\n\n    /**\n     * The array to store the text to be logged or saved to file\n     * @type {array}\n     */\n    this.messages = []\n  }\n\n  /**\n   * Initial output message\n   */\n  start () {\n    const startMessage = `LogMoon HTTP Log Monitoring started: ${new Date()}`\n    const spacingBefore = Math.floor((process.stdout.columns - startMessage.length) / 2) - 1\n    const spacingAfter = process.stdout.columns - (startMessage.length + spacingBefore + 2)\n\n    console.log(spacingBefore, spacingAfter)\n\n    this.messages = [\n      `+${'-'.repeat(process.stdout.columns - 2)}+`,\n      `|${' '.repeat(spacingBefore)}${startMessage}${' '.repeat(spacingAfter)}|`,\n      `+${'-'.repeat(process.stdout.columns - 2)}+`,\n      ''\n    ]\n    this.messages.forEach(message => {\n      console.log(chalk.bgBlue.white.bold(message))\n      if (this.outputFs !== false) {\n        fs.writeSync(this.outputFs, `${message}\\n`)\n      }\n    })\n  }\n\n  /**\n   * Display a message in the terminal and, optionally, save it in the output file\n   * @param {date} initialTime The initial time of the stats\n   * @param {date} currentTime The current time, when the message is being displayed\n   * @param {object} topSection The object with the most accessed section, with value and amount\n   * @param {object} topMethod The object with the most accessed HTTP method, with value and amount\n   * @param {object} topStatus The object with the most accessed HTTP response status, with value and amount\n   * @param {number} totalRequests The total amount of requests\n   * @param {number} totalDataTransfer The total data transfered, in bytes\n   */\n  stats (initialTime, currentTime, topSection, topMethod, topStatus, totalRequests, totalDataTransfer) {\n    if (typeof topSection !== 'undefined') {\n      this.messages = [\n        '-'.repeat(process.stdout.columns),\n        `REPORT FROM ${initialTime} until ${currentTime}`,\n        '',\n        `MOST ACCESSED SECTION: \"${topSection.value}\" => ${topSection.amount} times`,\n        `MOST USED HTTP METHOD: \"${topMethod.value}\" => ${topMethod.amount} times`,\n        `MOST RESPONDED STATUS: \"${topStatus.value}\" => ${topStatus.amount} times`,\n        `TOTAL REQUESTS IN THE PERIOD: ${totalRequests} requests`,\n        `TOTAL TRANSFER IN THE PERIOD: ${Output.convertBytes(totalDataTransfer)}`,\n        '-'.repeat(process.stdout.columns)\n      ]\n    } else {\n      this.messages = [\n        '-'.repeat(process.stdout.columns),\n        `no traffic  FROM ${initialTime} until ${currentTime}`,\n        '-'.repeat(process.stdout.columns)\n      ]\n    }\n    this.messages.forEach(message => {\n      console.log(message)\n      if (this.outputFs !== false) {\n        fs.writeSync(this.outputFs, `${message}\\n`)\n      }\n    })\n  }\n\n  /**\n   * Display an alert message in the terminal and, optionally, save it in the output file\n   * @param {string} text The text to be displayed\n   * @param {boolean} alertOn If true, it's the alert being turned on, if false, the alert is being turned off\n   */\n  alarm (text, alertOn = false) {\n    const bgColour = alertOn ? 'bgRed' : 'bgGreen'\n    const colour = alertOn ? 'white' : 'black'\n    this.messages = [\n      '*'.repeat(process.stdout.columns),\n      text + '*'.repeat(process.stdout.columns - text.length),\n      '*'.repeat(process.stdout.columns)\n    ]\n\n    this.messages.forEach(message => {\n      console.log(chalk[bgColour][colour](message))\n      if (this.outputFs !== false) {\n        fs.writeSync(this.outputFs, `${message}\\n`)\n      }\n    })\n  }\n\n  /**\n   * Convert bytes into KB, MB, GB or TB, depending on the amount of bytes\n   * @param {number} bytes the bytes to be converted\n   */\n  static convertBytes (bytes) {\n    if (bytes === 0) return '0 Bytes'\n\n    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']\n    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))\n\n    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]\n  }\n}\n\nmodule.exports = Output\n",
+    "content": "const chalk = require('chalk')\nconst fs = require('fs')\nconst Config = require('./config')\nconst notifier = require('node-notifier')\nconst path = require('path');\nconst config = new Config()\n\n/**\n * Output class\n * Output data to the terminal and to the optional result file\n */\nclass Output {\n  constructor () {\n    /**\n     * The output openSync with the output file location data OR false if outputLocation is not set or set as 'false'\n     * @type {number|boolean}\n     */\n    this.outputFs = config.outputLocation === 'false' ? false : fs.openSync(config.outputLocation, 'a')\n\n    /**\n     * The array to store the text to be logged or saved to file\n     * @type {array}\n     */\n    this.messages = []\n  }\n\n  /**\n   * Initial output message\n   */\n  start () {\n    const startMessage = `LogMoon HTTP Log Monitoring started: ${new Date()}`\n    const spacingBefore = Math.floor((process.stdout.columns - startMessage.length) / 2) - 1\n    const spacingAfter = process.stdout.columns - (startMessage.length + spacingBefore + 2)\n\n    this.messages = [\n      `+${'-'.repeat(process.stdout.columns - 2)}+`,\n      `|${' '.repeat(spacingBefore)}${startMessage}${' '.repeat(spacingAfter)}|`,\n      `+${'-'.repeat(process.stdout.columns - 2)}+`,\n      ''\n    ]\n    notifier.notify(\n      {\n        title: 'LogMoon',\n        message: startMessage,\n        icon: path.join(__dirname, 'LogMoon.png'), // Absolute path (doesn't work on balloons)\n        sound: false, // Only Notification Center or Windows Toasters\n        wait: false // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option\n      })\n    this.messages.forEach(message => {\n      console.log(chalk.bgBlue.white.bold(message))\n      if (this.outputFs !== false) {\n        fs.writeSync(this.outputFs, `${message}\\n`)\n      }\n    })\n  }\n\n  /**\n   * Display a message in the terminal and, optionally, save it in the output file\n   * @param {date} initialTime The initial time of the stats\n   * @param {date} currentTime The current time, when the message is being displayed\n   * @param {object} topSection The object with the most accessed section, with value and amount\n   * @param {object} topMethod The object with the most accessed HTTP method, with value and amount\n   * @param {object} topStatus The object with the most accessed HTTP response status, with value and amount\n   * @param {number} totalRequests The total amount of requests\n   * @param {number} totalDataTransfer The total data transfered, in bytes\n   */\n  stats (initialTime, currentTime, topSection, topMethod, topStatus, totalRequests, totalDataTransfer) {\n    if (typeof topSection !== 'undefined') {\n      this.messages = [\n        '-'.repeat(process.stdout.columns),\n        `REPORT FROM ${initialTime} until ${currentTime}`,\n        '',\n        `MOST ACCESSED SECTION: \"${topSection.value}\" => ${topSection.amount} times`,\n        `MOST USED HTTP METHOD: \"${topMethod.value}\" => ${topMethod.amount} times`,\n        `MOST RESPONDED STATUS: \"${topStatus.value}\" => ${topStatus.amount} times`,\n        `TOTAL REQUESTS IN THE PERIOD: ${totalRequests} requests`,\n        `TOTAL TRANSFER IN THE PERIOD: ${Output.convertBytes(totalDataTransfer)}`,\n        '-'.repeat(process.stdout.columns)\n      ]\n    } else {\n      this.messages = [\n        '-'.repeat(process.stdout.columns),\n        `no traffic  FROM ${initialTime} until ${currentTime}`,\n        '-'.repeat(process.stdout.columns)\n      ]\n    }\n    this.messages.forEach(message => {\n      console.log(message)\n      if (this.outputFs !== false) {\n        fs.writeSync(this.outputFs, `${message}\\n`)\n      }\n    })\n  }\n\n  /**\n   * Display an alert message in the terminal and, optionally, save it in the output file\n   * @param {string} text The text to be displayed\n   * @param {boolean} alertOn If true, it's the alert being turned on, if false, the alert is being turned off\n   */\n  alarm (text, alertOn = false) {\n    const bgColour = alertOn ? 'bgRed' : 'bgGreen'\n    const colour = alertOn ? 'white' : 'black'\n    this.messages = [\n      '*'.repeat(process.stdout.columns),\n      text + '*'.repeat(process.stdout.columns - text.length),\n      '*'.repeat(process.stdout.columns)\n    ]\n\n    this.messages.forEach(message => {\n      console.log(chalk[bgColour][colour](message))\n      if (this.outputFs !== false) {\n        fs.writeSync(this.outputFs, `${message}\\n`)\n      }\n    })\n    notifier.notify(\n      {\n        title: alertOn ? 'ALERT!' : 'LogMoon',\n        message: text,\n        icon: path.join(__dirname, 'LogMoon.png'), // Absolute path (doesn't work on balloons)\n        sound: alertOn // Only Notification Center or Windows Toasters\n      })\n  }\n\n  /**\n   * Convert bytes into KB, MB, GB or TB, depending on the amount of bytes\n   * @param {number} bytes the bytes to be converted\n   */\n  static convertBytes (bytes) {\n    if (bytes === 0) return '0 Bytes'\n\n    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']\n    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))\n\n    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]\n  }\n}\n\nmodule.exports = Output\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/output.js",
     "access": "public",
@@ -1164,7 +1255,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 86,
+    "__docId__": 91,
     "kind": "variable",
     "name": "config",
     "memberof": "src/output.js",
@@ -1175,7 +1266,7 @@
     "importPath": "logmoon/src/output.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 5,
+    "lineNumber": 6,
     "undocument": true,
     "type": {
       "types": [
@@ -1185,7 +1276,7 @@
     "ignore": true
   },
   {
-    "__docId__": 87,
+    "__docId__": 92,
     "kind": "class",
     "name": "Output",
     "memberof": "src/output.js",
@@ -1196,11 +1287,11 @@
     "importPath": "logmoon/src/output.js",
     "importStyle": "Output",
     "description": "Output class\nOutput data to the terminal and to the optional result file",
-    "lineNumber": 11,
+    "lineNumber": 12,
     "interface": false
   },
   {
-    "__docId__": 88,
+    "__docId__": 93,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/output.js~Output",
@@ -1210,11 +1301,11 @@
     "longname": "src/output.js~Output#constructor",
     "access": "public",
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 13,
     "undocument": true
   },
   {
-    "__docId__": 89,
+    "__docId__": 94,
     "kind": "member",
     "name": "outputFs",
     "memberof": "src/output.js~Output",
@@ -1222,7 +1313,7 @@
     "longname": "src/output.js~Output#outputFs",
     "access": "public",
     "description": "The output openSync with the output file location data OR false if outputLocation is not set or set as 'false'",
-    "lineNumber": 17,
+    "lineNumber": 18,
     "type": {
       "nullable": null,
       "types": [
@@ -1234,7 +1325,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 95,
     "kind": "member",
     "name": "messages",
     "memberof": "src/output.js~Output",
@@ -1242,7 +1333,7 @@
     "longname": "src/output.js~Output#messages",
     "access": "public",
     "description": "The array to store the text to be logged or saved to file",
-    "lineNumber": 23,
+    "lineNumber": 24,
     "type": {
       "nullable": null,
       "types": [
@@ -1253,7 +1344,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 96,
     "kind": "method",
     "name": "start",
     "memberof": "src/output.js~Output",
@@ -1263,12 +1354,12 @@
     "longname": "src/output.js~Output#start",
     "access": "public",
     "description": "Initial output message",
-    "lineNumber": 29,
+    "lineNumber": 30,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 93,
+    "__docId__": 98,
     "kind": "method",
     "name": "stats",
     "memberof": "src/output.js~Output",
@@ -1278,7 +1369,7 @@
     "longname": "src/output.js~Output#stats",
     "access": "public",
     "description": "Display a message in the terminal and, optionally, save it in the output file",
-    "lineNumber": 60,
+    "lineNumber": 67,
     "params": [
       {
         "nullable": null,
@@ -1354,7 +1445,7 @@
     "return": null
   },
   {
-    "__docId__": 96,
+    "__docId__": 101,
     "kind": "method",
     "name": "alarm",
     "memberof": "src/output.js~Output",
@@ -1364,7 +1455,7 @@
     "longname": "src/output.js~Output#alarm",
     "access": "public",
     "description": "Display an alert message in the terminal and, optionally, save it in the output file",
-    "lineNumber": 93,
+    "lineNumber": 100,
     "params": [
       {
         "nullable": null,
@@ -1390,7 +1481,7 @@
     "return": null
   },
   {
-    "__docId__": 98,
+    "__docId__": 103,
     "kind": "method",
     "name": "convertBytes",
     "memberof": "src/output.js~Output",
@@ -1400,7 +1491,7 @@
     "longname": "src/output.js~Output.convertBytes",
     "access": "public",
     "description": "Convert bytes into KB, MB, GB or TB, depending on the amount of bytes",
-    "lineNumber": 114,
+    "lineNumber": 128,
     "params": [
       {
         "nullable": null,
@@ -1420,7 +1511,7 @@
     }
   },
   {
-    "__docId__": 99,
+    "__docId__": 104,
     "kind": "file",
     "name": "src/stats-map.js",
     "content": "/**\n * Stats Map class\n * @extends {Map}\n */\nclass StatsMap extends Map {\n  /**\n   * Add 1 to the item mapped on index. If the index doesn't exist, create the item and set it's count as 1\n   * @param {string} index The index of the data to be added\n   */\n  addOne (index) {\n    const data = this.get(index)\n    this.set(index, typeof data !== 'undefined' ? data + 1 : 1)\n  }\n\n  /**\n   * Retrive the item that has more occurences and the amount of occurrences\n   */\n  top () {\n    let topMethod = [null, 0]\n\n    if (this.size > 0) {\n      // Use the array reduce method to retrieve the bigger value. Iterates each item and always stay with the bigger item\n      topMethod = [...this.entries()].reduce((previous, current) => current[1] > previous[1] ? current : previous)\n    }\n    return {\n      value: topMethod[0],\n      amount: topMethod[1]\n    }\n  }\n}\n\nmodule.exports = StatsMap\n",
@@ -1431,7 +1522,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 100,
+    "__docId__": 105,
     "kind": "class",
     "name": "StatsMap",
     "memberof": "src/stats-map.js",
@@ -1449,7 +1540,7 @@
     ]
   },
   {
-    "__docId__": 101,
+    "__docId__": 106,
     "kind": "method",
     "name": "addOne",
     "memberof": "src/stats-map.js~StatsMap",
@@ -1475,7 +1566,7 @@
     "return": null
   },
   {
-    "__docId__": 102,
+    "__docId__": 107,
     "kind": "method",
     "name": "top",
     "memberof": "src/stats-map.js~StatsMap",
@@ -1494,10 +1585,10 @@
     }
   },
   {
-    "__docId__": 103,
+    "__docId__": 108,
     "kind": "file",
     "name": "src/stats.js",
-    "content": "const Config = require('./config')\nconst StatsMap = require('./stats-map')\nconst Output = require('./output')\n\nconst config = new Config()\nconst output = new Output()\n\n/**\n * Stats class, control and display stats data\n */\nclass Stats {\n  /**\n   * Constructor function\n   */\n  constructor () {\n    /**\n     * The StatsMap of the log methods\n     * @type StatsMap\n     */\n    this.methods = new StatsMap()\n\n    /**\n     * The StatsMap of the log sections\n     * @type StatsMap\n     */\n    this.sections = new StatsMap()\n\n    /**\n     * The StatsMap of the log statuses\n     * @type StatsMap\n     */\n    this.statuses = new StatsMap()\n\n    /**\n     * The total transfered bytes\n     * @type number\n     */\n    this.totalDataTransfer = 0\n\n    /**\n     * The total number of requests\n     * @type number\n     */\n    this.totalRequests = 0\n  }\n\n  /**\n   * Add a new line of data to the logs array\n   * @param {string} data The line of data read from the log\n   * Example of data: 127.0.0.1 - - [23/Feb/2020:10:16:44 +0000] \"GET /user/charles HTTP/1.1\" 200 246\n   */\n  push (data) {\n    const entryRegEx = /[0-9.]+ [A-Za-z-]+ [A-Za-z-]+ \\[.+\\] \"(.+) \\/([^/]*)\\/?[^ ]* [^ ]* ([0-9]+) ([0-9]+)/\n    //                                                        ^      ^                     ^        ^\n    // Capture Groups                                         1      2                     3        4\n    //                                                        method section               status   dataTransfer\n    const match = data.match(entryRegEx)\n\n    this.methods.addOne(match[1])\n    this.sections.addOne(match[2])\n    this.statuses.addOne(match[3])\n    this.totalDataTransfer += Number(match[4])\n    this.totalRequests += 1\n  }\n\n  /**\n   * Clean the maps and zero the total data transfer and total requests\n   */\n  clean () {\n    this.methods.clear()\n    this.sections.clear()\n    this.statuses.clear()\n    this.totalDataTransfer = 0\n    this.totalRequests = 0\n  }\n\n  /**\n   * Start the log monitoring\n   * @param {date} [previous=false] The previous time the function was executed\n   */\n  monitor (previous = false) {\n    const now = new Date()\n    // Just execute the function if a previous period of data was captured\n    if (previous) {\n      const topMethod = this.methods.top()\n      const topSection = this.sections.top()\n      const topStatus = this.statuses.top()\n\n      if (topSection.amount && topSection.amount > 0) {\n        output.stats(previous, now, topSection, topMethod, topStatus, this.totalRequests, this.totalDataTransfer)\n      } else {\n        output.stats(previous, now)\n      }\n\n      // Zero the data for the next run\n      this.clean()\n    }\n\n    // Pause for the statsDisplayInterval amount\n    setTimeout(() => {\n      this.monitor(now)\n    }, config.statsDisplayInterval)\n  }\n}\n\nmodule.exports = Stats\n",
+    "content": "const Config = require('./config')\nconst StatsMap = require('./stats-map')\nconst Output = require('./output')\n\nconst config = new Config()\nconst output = new Output()\n\n/**\n * Stats class, control and display stats data\n */\nclass Stats {\n  /**\n   * Constructor function\n   */\n  constructor () {\n    /**\n     * The StatsMap of the log methods\n     * @type StatsMap\n     */\n    this.methods = new StatsMap()\n\n    /**\n     * The StatsMap of the log sections\n     * @type StatsMap\n     */\n    this.sections = new StatsMap()\n\n    /**\n     * The StatsMap of the log statuses\n     * @type StatsMap\n     */\n    this.statuses = new StatsMap()\n\n    /**\n     * The total transfered bytes\n     * @type number\n     */\n    this.totalDataTransfer = 0\n\n    /**\n     * The total number of requests\n     * @type number\n     */\n    this.totalRequests = 0\n\n    /**\n     * @type {boolean} Variable to stop the execution when needed\n     */\n    this.run = true\n  }\n\n  /**\n   * Add a new line of data to the logs array\n   * @param {string} data The line of data read from the log\n   * Example of data: 127.0.0.1 - - [23/Feb/2020:10:16:44 +0000] \"GET /user/charles HTTP/1.1\" 200 246\n   */\n  push (data) {\n    const entryRegEx = /[0-9.]+ [A-Za-z-]+ [A-Za-z-]+ \\[.+\\] \"(.+) \\/([^/]*)\\/?[^ ]* [^ ]* ([0-9]+) ([0-9]+)/\n    //                                                        ^      ^                     ^        ^\n    // Capture Groups                                         1      2                     3        4\n    //                                                        method section               status   dataTransfer\n    const match = data.match(entryRegEx)\n\n    this.methods.addOne(match[1])\n    this.sections.addOne(match[2])\n    this.statuses.addOne(match[3])\n    this.totalDataTransfer += Number(match[4])\n    this.totalRequests += 1\n  }\n\n  /**\n   * Clean the maps and zero the total data transfer and total requests\n   */\n  clean () {\n    this.methods.clear()\n    this.sections.clear()\n    this.statuses.clear()\n    this.totalDataTransfer = 0\n    this.totalRequests = 0\n  }\n\n  /**\n   * Start the log monitoring\n   * @param {date} [previous=false] The previous time the function was executed\n   */\n  monitor (previous = false) {\n    if (!this.run) {\n      return\n    }\n    const now = new Date()\n    // Just execute the function if a previous period of data was captured\n    if (previous) {\n      const topMethod = this.methods.top()\n      const topSection = this.sections.top()\n      const topStatus = this.statuses.top()\n\n      if (topSection.amount && topSection.amount > 0) {\n        output.stats(previous, now, topSection, topMethod, topStatus, this.totalRequests, this.totalDataTransfer)\n      } else {\n        output.stats(previous, now)\n      }\n\n      // Zero the data for the next run\n      this.clean()\n    }\n\n    // Pause for the statsDisplayInterval amount\n    setTimeout(() => {\n      this.monitor(now)\n    }, config.statsDisplayInterval)\n  }\n\n  /**\n   * Stop the monitoring\n   */\n  stop () {\n    this.run = false\n  }\n}\n\nmodule.exports = Stats\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/stats.js",
     "access": "public",
@@ -1505,7 +1596,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 104,
+    "__docId__": 109,
     "kind": "variable",
     "name": "config",
     "memberof": "src/stats.js",
@@ -1526,7 +1617,7 @@
     "ignore": true
   },
   {
-    "__docId__": 105,
+    "__docId__": 110,
     "kind": "variable",
     "name": "output",
     "memberof": "src/stats.js",
@@ -1547,7 +1638,7 @@
     "ignore": true
   },
   {
-    "__docId__": 106,
+    "__docId__": 111,
     "kind": "class",
     "name": "Stats",
     "memberof": "src/stats.js",
@@ -1562,7 +1653,7 @@
     "interface": false
   },
   {
-    "__docId__": 107,
+    "__docId__": 112,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/stats.js~Stats",
@@ -1575,7 +1666,7 @@
     "lineNumber": 15
   },
   {
-    "__docId__": 108,
+    "__docId__": 113,
     "kind": "member",
     "name": "methods",
     "memberof": "src/stats.js~Stats",
@@ -1594,7 +1685,7 @@
     }
   },
   {
-    "__docId__": 109,
+    "__docId__": 114,
     "kind": "member",
     "name": "sections",
     "memberof": "src/stats.js~Stats",
@@ -1613,7 +1704,7 @@
     }
   },
   {
-    "__docId__": 110,
+    "__docId__": 115,
     "kind": "member",
     "name": "statuses",
     "memberof": "src/stats.js~Stats",
@@ -1632,7 +1723,7 @@
     }
   },
   {
-    "__docId__": 111,
+    "__docId__": 116,
     "kind": "member",
     "name": "totalDataTransfer",
     "memberof": "src/stats.js~Stats",
@@ -1651,7 +1742,7 @@
     }
   },
   {
-    "__docId__": 112,
+    "__docId__": 117,
     "kind": "member",
     "name": "totalRequests",
     "memberof": "src/stats.js~Stats",
@@ -1670,7 +1761,26 @@
     }
   },
   {
-    "__docId__": 113,
+    "__docId__": 118,
+    "kind": "member",
+    "name": "run",
+    "memberof": "src/stats.js~Stats",
+    "static": false,
+    "longname": "src/stats.js~Stats#run",
+    "access": "public",
+    "description": "",
+    "lineNumber": 49,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 119,
     "kind": "method",
     "name": "push",
     "memberof": "src/stats.js~Stats",
@@ -1680,7 +1790,7 @@
     "longname": "src/stats.js~Stats#push",
     "access": "public",
     "description": "Add a new line of data to the logs array",
-    "lineNumber": 52,
+    "lineNumber": 57,
     "params": [
       {
         "nullable": null,
@@ -1696,7 +1806,7 @@
     "return": null
   },
   {
-    "__docId__": 116,
+    "__docId__": 122,
     "kind": "method",
     "name": "clean",
     "memberof": "src/stats.js~Stats",
@@ -1706,12 +1816,12 @@
     "longname": "src/stats.js~Stats#clean",
     "access": "public",
     "description": "Clean the maps and zero the total data transfer and total requests",
-    "lineNumber": 69,
+    "lineNumber": 74,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 119,
+    "__docId__": 125,
     "kind": "method",
     "name": "monitor",
     "memberof": "src/stats.js~Stats",
@@ -1721,7 +1831,7 @@
     "longname": "src/stats.js~Stats#monitor",
     "access": "public",
     "description": "Start the log monitoring",
-    "lineNumber": 81,
+    "lineNumber": 86,
     "params": [
       {
         "nullable": null,
@@ -1739,10 +1849,25 @@
     "return": null
   },
   {
-    "__docId__": 120,
+    "__docId__": 126,
+    "kind": "method",
+    "name": "stop",
+    "memberof": "src/stats.js~Stats",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stats.js~Stats#stop",
+    "access": "public",
+    "description": "Stop the monitoring",
+    "lineNumber": 116,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 128,
     "kind": "file",
     "name": "src/tail.js",
-    "content": "const T = require('tail').Tail\nconst Config = require('./config')\nconst config = new Config()\n\n/**\n * Tail class, reads the log stream\n */\nclass Tail {\n  /**\n   * Starts the log tail\n   * @param {function} success the callback function on data read success\n   * @param {function} error the callback function on error\n   */\n  static start (success, error) {\n    const tail = new T(config.logFile)\n\n    tail.on('line', (data) => success(data))\n    tail.on('error', (e) => error(e))\n  }\n}\n\nmodule.exports = Tail\n",
+    "content": "const T = require('tail').Tail\nconst Config = require('./config')\nconst config = new Config()\n\nlet tail\n/**\n * Tail class, reads the log stream\n */\nclass Tail {\n  /**\n   * Starts the log tail\n   * @param {function} success the callback function on data read success\n   * @param {function} error the callback function on error\n   */\n  static start (success, error) {\n    tail = new T(config.logFile)\n\n    tail.on('line', (data) => success(data))\n    tail.on('error', (e) => error(e))\n  }\n\n  /**\n   * Stop the tail\n   */\n  static stop () {\n    tail.unwatch()\n  }\n}\n\nmodule.exports = Tail\n",
     "static": true,
     "longname": "C:/Users/russo/development/datadog/logmoon/src/tail.js",
     "access": "public",
@@ -1750,7 +1875,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 121,
+    "__docId__": 129,
     "kind": "variable",
     "name": "config",
     "memberof": "src/tail.js",
@@ -1771,7 +1896,7 @@
     "ignore": true
   },
   {
-    "__docId__": 122,
+    "__docId__": 130,
     "kind": "class",
     "name": "Tail",
     "memberof": "src/tail.js",
@@ -1782,11 +1907,11 @@
     "importPath": "logmoon/src/tail.js",
     "importStyle": "Tail",
     "description": "Tail class, reads the log stream",
-    "lineNumber": 8,
+    "lineNumber": 9,
     "interface": false
   },
   {
-    "__docId__": 123,
+    "__docId__": 131,
     "kind": "method",
     "name": "start",
     "memberof": "src/tail.js~Tail",
@@ -1796,7 +1921,7 @@
     "longname": "src/tail.js~Tail.start",
     "access": "public",
     "description": "Starts the log tail",
-    "lineNumber": 14,
+    "lineNumber": 15,
     "params": [
       {
         "nullable": null,
@@ -1822,6 +1947,21 @@
     "return": null
   },
   {
+    "__docId__": 132,
+    "kind": "method",
+    "name": "stop",
+    "memberof": "src/tail.js~Tail",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/tail.js~Tail.stop",
+    "access": "public",
+    "description": "Stop the tail",
+    "lineNumber": 25,
+    "params": [],
+    "return": null
+  },
+  {
     "kind": "index",
     "content": "![LogMoon Logo](https://vectr.com/russoedu/eyLOsitfC.svg?width=256&select=eyLOsitfCpage0)\n\n\n[![Dependencies Status](https://david-dm.org/russoedu/logmoon/status.svg)](https://david-dm.org/russoedu/logmoon)\n[![DevDependencies Status](https://david-dm.org/russoedu/logmoon/dev-status.svg)](https://david-dm.org/russoedu/logmoon?type=dev)\n[![Coverage Status](https://coveralls.io/repos/github/russoedu/logmoon/badge.svg?branch=master)](https://coveralls.io/github/russoedu/logmoon?branch=master)\n[![Build Status](https://travis-ci.org/russoedu/logmoon.svg?branch=master)](https://travis-ci.org/russoedu/logmoon)\n\n# LogMoon\nLogMoon is real time HTTP log monitoring CLI. It will display access stats in a determined frquency and alert you if a chosen access limit is reached in 2 minutes.\n\n## Installation\n\nYou can install LogMoon as a global NPM package by running\n```\nnpm i -g logmoon\n```\n\nLogMoon will be installed and will be available globally in your terminal.\n\n## Configuration\n\nLogMoon has 4 configurations that can be changed via environment variables (instructions: [Windows](https://docs.oracle.com/en/database/oracle/r-enterprise/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0) | [Unix](https://www.cyberciti.biz/faq/set-environment-variable-unix/)) or via the creation of a ```.env``` file based on the ```.env.example```:\n\n### 1. ```STATS_DISPLAY_INTERVAL``` (seconds)\n\n>The interval to display access information (TODO).\n>\n>*Default value is 10.* (Access information is displayed every 10 seconds);\n\n### 2. ```REQUESTS_PER_SECOND_ALARM``` (requests per second)\n\n>The number of requestes per second threshold witch will display an alert when reached.\n>\n>*Default value is 10.* (Alert is displayed if 10 or more requests per second are made in the past ```LOGMOON_ALARM_PERIOD``` seconds).\n\n### 3. ```LOGMOON_ALARM_PERIOD``` (seconds period)\n>The period where the alarm of requests per second will be tested and active.\n>\n>*Default value is 120.* (Alert is displayed if ```REQUESTS_PER_SECOND_ALARM``` or more requests per second are made in the past 2 minutes).\n\n### 3. ```LOG_FILE``` (file location)\n\n>The location of the [W3C-formatted HTTP access log](https://www.w3.org/Daemon/User/Config/Logging.html).\n>\n>*Default value is /tmp/access.log.* (The location from where the log file will be consumed in real time).\n\n### 4. ```LOGMOON_OUTPUT_LOCATION``` (file location)\n\n>The location of the output file. If empty, or not present, LogMoon will not log to file, only to the terminal window\n\n## Usage\n\nIn order to use LogMoon, you can execute the following on the terminal:\n\n```\nlogmoon\n```\n\nLogMoon should start running and displaying the information from your server log file.\n\n## Development\n\nTo install locally and be able to contribute, clone this repo and save a copy of ```.env.example``` as ```.env```.\n\nTo execute the application:\n```\nnpm start\n```\n\nTo run the tests:\n```\nnpm test\n```\n\nTo generate the documentation:\n```\nnpm run doc\n```\n\n## Future improvements\n\n- [ ] Find a less memory consumming solution for the alarm (maybe based on the average requests instead of an array)\n- [ ] Make the ```REQUESTS_PER_SECOND_ALARM``` variable according to the log frequency\n- [ ] Display an alert in a permanet position in the screen\n- [ ] Create other alerts, for instance for any status 50x or certain amount of status 40x in a period of time\n- [ ] Handle several logs\n- [ ] Create a browser output\n- [ ] Create an Electron app\n- [ ] Sending push notifications ([PushMe](https://pushme.jagcesar.se/) solution, for instance)\n",
     "longname": "C:\\Users\\russo\\development\\datadog\\logmoon\\README.md",
@@ -1831,7 +1971,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"logmoon\",\n  \"version\": \"0.0.1\",\n  \"homepage\": \"https://github.com/russoedu/logmoon#readme\",\n  \"license\": \"MIT\",\n  \"description\": \"HTTP log monitoring console program\",\n  \"author\": {\n    \"name\": \"Eduardo Russo\",\n    \"email\": \"russoedu@gmail.com\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/russoedu/logmoon/issues\"\n  },\n  \"main\": \"src/index.js\",\n  \"bin\": {\n    \"logmoon\": \"./src/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node ./src/index.js\",\n    \"test\": \"nyc --reporter=html --reporter=text mocha\",\n    \"coverage\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"doc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/russoedu/logmoon.git\"\n  },\n  \"keywords\": [\n    \"log\",\n    \"monitoring\",\n    \"terminal\",\n    \"alert\"\n  ],\n  \"devDependencies\": {\n    \"chai\": \"^4.2.0\",\n    \"coveralls\": \"^3.0.9\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.5\",\n    \"esdoc-node-plugin\": \"^0.2.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.8.0\",\n    \"eslint-config-standard\": \"^14.1.0\",\n    \"eslint-plugin-chai-friendly\": \"^0.5.0\",\n    \"eslint-plugin-import\": \"^2.20.1\",\n    \"eslint-plugin-node\": \"^11.0.0\",\n    \"eslint-plugin-promise\": \"^4.2.1\",\n    \"eslint-plugin-standard\": \"^4.0.1\",\n    \"mocha\": \"^7.0.1\",\n    \"mocked-env\": \"^1.3.2\",\n    \"nyc\": \"^15.0.0\",\n    \"sinon\": \"^9.0.0\"\n  },\n  \"dependencies\": {\n    \"chalk\": \"^3.0.0\",\n    \"dotenv\": \"^8.2.0\",\n    \"fs-backwards-stream\": \"^1.0.0\",\n    \"node-notifier\": \"^6.0.0\",\n    \"tail\": \"^2.0.3\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"logmoon\",\n  \"version\": \"1.6.0\",\n  \"homepage\": \"https://github.com/russoedu/logmoon#readme\",\n  \"license\": \"MIT\",\n  \"description\": \"HTTP log monitoring console program\",\n  \"author\": {\n    \"name\": \"Eduardo Russo\",\n    \"email\": \"russoedu@gmail.com\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/russoedu/logmoon/issues\"\n  },\n  \"main\": \"src/index.js\",\n  \"bin\": {\n    \"logmoon\": \"./src/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node ./src/index.js\",\n    \"test\": \"nyc --reporter=html --reporter=text mocha\",\n    \"coverage\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"doc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/russoedu/logmoon.git\"\n  },\n  \"keywords\": [\n    \"log\",\n    \"monitoring\",\n    \"terminal\",\n    \"alert\"\n  ],\n  \"devDependencies\": {\n    \"chai\": \"^4.2.0\",\n    \"coveralls\": \"^3.0.9\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.5\",\n    \"esdoc-node-plugin\": \"^0.2.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.8.0\",\n    \"eslint-config-standard\": \"^14.1.0\",\n    \"eslint-plugin-chai-friendly\": \"^0.5.0\",\n    \"eslint-plugin-import\": \"^2.20.1\",\n    \"eslint-plugin-node\": \"^11.0.0\",\n    \"eslint-plugin-promise\": \"^4.2.1\",\n    \"eslint-plugin-standard\": \"^4.0.1\",\n    \"mocha\": \"^7.0.1\",\n    \"mocked-env\": \"^1.3.2\",\n    \"nyc\": \"^15.0.0\",\n    \"sinon\": \"^9.0.0\"\n  },\n  \"dependencies\": {\n    \"chalk\": \"^3.0.0\",\n    \"dotenv\": \"^8.2.0\",\n    \"node-notifier\": \"^6.0.0\",\n    \"tail\": \"^2.0.3\"\n  }\n}\n",
     "longname": "C:\\Users\\russo\\development\\datadog\\logmoon\\package.json",
     "name": "package.json",
     "static": true,

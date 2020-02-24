@@ -1,14 +1,18 @@
 /**
  * AlarmArray class
- * @extends {Array}
  */
-class AlarmArray extends Array {
+class AlarmArray {
   /**
    * Creates a new instance
    * @param {number} maximumSize the maximum size of the array - relates to the Alarm monitoring time
    */
   constructor (maximumSize) {
-    super()
+    /**
+     * The array where the requests will be stored
+     * @type {array}
+     */
+    this.queue = []
+
     /**
      * The total number of requests stored since the last update
      * @type {number}
@@ -39,10 +43,10 @@ class AlarmArray extends Array {
    * Update the queue by pushing a new value and shifting the value in the end of the array if it is bigger than the `maximumSize`
    */
   updateQueue () {
-    this.push(this.requests)
+    this.queue.push(this.requests)
     this.requestsOnPeriod += this.requests
-    if (this.length > this.maximumSize) {
-      this.requestsOnPeriod -= this.shift()
+    if (this.queue.length > this.maximumSize) {
+      this.requestsOnPeriod -= this.queue.shift()
     }
     this.requests = 0
   }

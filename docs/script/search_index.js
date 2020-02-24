@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "logmoon/src/monitor.js~monitor",
+    "class/src/monitor.js~Monitor.html",
+    "<span>Monitor</span> <span class=\"search-result-import-path\">logmoon/src/monitor.js</span>",
+    "class"
+  ],
+  [
     "logmoon/src/output.js~output",
     "class/src/output.js~Output.html",
     "<span>Output</span> <span class=\"search-result-import-path\">logmoon/src/output.js</span>",
@@ -348,6 +354,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/alarm-array.js~alarmarray#queue",
+    "class/src/alarm-array.js~AlarmArray.html#instance-member-queue",
+    "src/alarm-array.js~AlarmArray#queue",
+    "member"
+  ],
+  [
     "src/alarm-array.js~alarmarray#requests",
     "class/src/alarm-array.js~AlarmArray.html#instance-member-requests",
     "src/alarm-array.js~AlarmArray#requests",
@@ -399,6 +411,12 @@ window.esdocSearchIndex = [
     "src/alarm.js~alarm#requestsqueue",
     "class/src/alarm.js~Alarm.html#instance-member-requestsQueue",
     "src/alarm.js~Alarm#requestsQueue",
+    "member"
+  ],
+  [
+    "src/alarm.js~alarm#run",
+    "class/src/alarm.js~Alarm.html#instance-member-run",
+    "src/alarm.js~Alarm#run",
     "member"
   ],
   [
@@ -454,6 +472,18 @@ window.esdocSearchIndex = [
     "file/src/index.js.html",
     "src/index.js",
     "file"
+  ],
+  [
+    "src/monitor.js",
+    "file/src/monitor.js.html",
+    "src/monitor.js",
+    "file"
+  ],
+  [
+    "src/monitor.js~monitor.run",
+    "class/src/monitor.js~Monitor.html#static-method-run",
+    "src/monitor.js~Monitor.run",
+    "method"
   ],
   [
     "src/output.js",
@@ -558,6 +588,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stats.js~stats#run",
+    "class/src/stats.js~Stats.html#instance-member-run",
+    "src/stats.js~Stats#run",
+    "member"
+  ],
+  [
     "src/stats.js~stats#sections",
     "class/src/stats.js~Stats.html#instance-member-sections",
     "src/stats.js~Stats#sections",
@@ -568,6 +604,12 @@ window.esdocSearchIndex = [
     "class/src/stats.js~Stats.html#instance-member-statuses",
     "src/stats.js~Stats#statuses",
     "member"
+  ],
+  [
+    "src/stats.js~stats#stop",
+    "class/src/stats.js~Stats.html#instance-method-stop",
+    "src/stats.js~Stats#stop",
+    "method"
   ],
   [
     "src/stats.js~stats#totaldatatransfer",
@@ -591,6 +633,12 @@ window.esdocSearchIndex = [
     "src/tail.js~tail.start",
     "class/src/tail.js~Tail.html#static-method-start",
     "src/tail.js~Tail.start",
+    "method"
+  ],
+  [
+    "src/tail.js~tail.stop",
+    "class/src/tail.js~Tail.html#static-method-stop",
+    "src/tail.js~Tail.stop",
     "method"
   ]
 ]

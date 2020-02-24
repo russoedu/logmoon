@@ -42,6 +42,11 @@ class Stats {
      * @type number
      */
     this.totalRequests = 0
+
+    /**
+     * @type {boolean} Variable to stop the execution when needed
+     */
+    this.run = true
   }
 
   /**
@@ -79,6 +84,9 @@ class Stats {
    * @param {date} [previous=false] The previous time the function was executed
    */
   monitor (previous = false) {
+    if (!this.run) {
+      return
+    }
     const now = new Date()
     // Just execute the function if a previous period of data was captured
     if (previous) {
@@ -100,6 +108,13 @@ class Stats {
     setTimeout(() => {
       this.monitor(now)
     }, config.statsDisplayInterval)
+  }
+
+  /**
+   * Stop the monitoring
+   */
+  stop () {
+    this.run = false
   }
 }
 

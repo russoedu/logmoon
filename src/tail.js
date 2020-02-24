@@ -2,6 +2,7 @@ const T = require('tail').Tail
 const Config = require('./config')
 const config = new Config()
 
+let tail
 /**
  * Tail class, reads the log stream
  */
@@ -12,10 +13,17 @@ class Tail {
    * @param {function} error the callback function on error
    */
   static start (success, error) {
-    const tail = new T(config.logFile)
+    tail = new T(config.logFile)
 
     tail.on('line', (data) => success(data))
     tail.on('error', (e) => error(e))
+  }
+
+  /**
+   * Stop the tail
+   */
+  static stop () {
+    tail.unwatch()
   }
 }
 

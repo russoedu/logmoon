@@ -1,16 +1,16 @@
 {
-  "coverage": "79.62%",
-  "expectCount": 54,
-  "actualCount": 43,
+  "coverage": "78.68%",
+  "expectCount": 61,
+  "actualCount": 48,
   "files": {
     "src/alarm-array.js": {
-      "expectCount": 7,
-      "actualCount": 7,
+      "expectCount": 8,
+      "actualCount": 8,
       "undocumentLines": []
     },
     "src/alarm.js": {
-      "expectCount": 8,
-      "actualCount": 6,
+      "expectCount": 9,
+      "actualCount": 7,
       "undocumentLines": [
         6,
         7
@@ -23,21 +23,23 @@
         2
       ]
     },
-    "src/index.js": {
-      "expectCount": 3,
+    "src/monitor.js": {
+      "expectCount": 5,
       "actualCount": 0,
       "undocumentLines": [
+        6,
+        7,
         8,
-        9,
-        10
+        10,
+        11
       ]
     },
     "src/output.js": {
       "expectCount": 9,
       "actualCount": 7,
       "undocumentLines": [
-        5,
-        12
+        6,
+        13
       ]
     },
     "src/stats-map.js": {
@@ -46,16 +48,16 @@
       "undocumentLines": []
     },
     "src/stats.js": {
-      "expectCount": 12,
-      "actualCount": 10,
+      "expectCount": 14,
+      "actualCount": 12,
       "undocumentLines": [
         5,
         6
       ]
     },
     "src/tail.js": {
-      "expectCount": 3,
-      "actualCount": 2,
+      "expectCount": 4,
+      "actualCount": 3,
       "undocumentLines": [
         3
       ]
