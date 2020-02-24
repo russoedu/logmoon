@@ -31,8 +31,6 @@ class Output {
     const spacingBefore = Math.floor((process.stdout.columns - startMessage.length) / 2) - 1
     const spacingAfter = process.stdout.columns - (startMessage.length + spacingBefore + 2)
 
-    console.log(spacingBefore, spacingAfter)
-
     this.messages = [
       `+${'-'.repeat(process.stdout.columns - 2)}+`,
       `|${' '.repeat(spacingBefore)}${startMessage}${' '.repeat(spacingAfter)}|`,
