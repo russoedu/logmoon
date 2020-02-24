@@ -1,6 +1,6 @@
 {
   "name": "logmoon",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "homepage": "https://github.com/russoedu/logmoon#readme",
   "license": "MIT",
   "description": "HTTP log monitoring console program",

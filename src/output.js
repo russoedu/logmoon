@@ -15,7 +15,7 @@ class Output {
      * The output openSync with the output file location data OR false if outputLocation is not set or set as 'false'
      * @type {number|boolean}
      */
-    this.outputFs = config.outputLocation === 'false' ? false : fs.openSync(config.outputLocation, 'a')
+    this.outputFs = config.outputLocation === false ? false : fs.openSync(config.outputLocation, 'a')
 
     /**
      * The array to store the text to be logged or saved to file
